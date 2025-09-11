@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ポートフォリオ</title>
+    <link rel="stylesheet" href="{% static 'myapp/css/style.css' %}">
+</head>
+
+<body>
+    <section class="about">
+        <h1>About</h1>
+        <p>私について</p>
+        <div class="profile">
+            <img src="{% static 'myapp/images/icon.jpg' %}" alt="アイコン">
+            <div class="info">
+                <h2>白上　俊</h2>
+                <p class="name-en">shun shiragami</p>
+                <p>年齢：19歳<br>
+                    出身地：山口県<br>
+                    好きな食べ物：ハンバーガー</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="frames">
+        <div class="frame">
+            <img src="{% static 'myapp/images/pokemon-unite.jpg' %}" alt="趣味画像">
+            <p><b>趣味：</b>ゲーム<br>pokemon uniteやHoKなどのMOBAをしています</p>
+        </div>
+
+        <div class="frame">
+            <a href="https://ja.wikipedia.org/wiki/Faker" target="_blank">
+                <img src="{% static 'myapp/images/faker.jpg' %}" alt="好きなサイト画像">
+            </a>
+            <p><b>好きなサイト</b><br>私が尊敬している人について書いてあるwikipediaのサイトです</p>
+        </div>
+
+        <div class="frame">
+            <img src="{% static 'myapp/images/goal.jpg' %}" alt="目標画像">
+            <p><b>1年間の目標</b><br>1年間病気にかからず健康に過ごす</p>
+        </div>
+    </section>
+</body>
+
+</html>
