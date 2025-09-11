@@ -1,0 +1,64 @@
+/* 全体の背景色とフォント */
+body {
+    font-family: "Arial", sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+/* コンテンツを中央に配置 */
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+/* 見出し */
+h1 {
+    text-align: center;
+    color: #333333;
+}
+
+/* フォームのラベル */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* 入力欄 */
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
+    font-size: 16px;
+}
+
+/* ボタン */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* 結果表示 */
+.result {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+    color: #333333;
+}

@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>四則演算計算機</title>
+    <link rel="stylesheet" href="{% static 'work06/css/calculator.css' %}">
+</head>
+<body>
+<div class="container">
+    <h1>四則演算計算機</h1>
+
+    <form method="POST" class="calculator-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="submit-btn">計算する</button>
+    </form>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% elif result is not None %}
+        <p class="result">結果: {{ result }}</p>
+    {% endif %}
+</div>
+</body>
+</html>

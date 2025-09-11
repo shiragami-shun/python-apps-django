@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>貯金シミュレーション</title>
+    <link rel="stylesheet" href="{% static 'work06/css/savings.css' %}">
+</head>
+<body>
+<div class="container">
+    <h1>貯金シミュレーション</h1>
+
+    <form method="POST" class="savings-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="submit-btn">計算する</button>
+    </form>
+
+    {% if table %}
+        <h2>年ごとの貯金額</h2>
+        <table>
+            <tr>
+                <th>年数</th>
+                <th>貯金総額(円)</th>
+            </tr>
+            {% for row in table %}
+            <tr>
+                <td>{{ row.year }}</td>
+                <td>{{ row.total|floatformat:0 }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</div>
+</body>
+</html>

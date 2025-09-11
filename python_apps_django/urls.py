@@ -17,13 +17,28 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
-from myapp.views import top
 from myapp.views import index
 from myapp.views import html
+from work06.views import bmi
+from work06.views import reiwa
+from work06.views import warikan
+from work06.views import savings
+from work06.views import calculator
+from django.shortcuts import render
+
+
+def toppage(request):
+    return render(request, "toppage.html")
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("top/", top),
     path("index/", index),
     path("html/", html),
+    path("toppage/", toppage),
+    path("bmi/", bmi, name="bmi"),
+    path("reiwa/", reiwa, name="reiwa"),
+    path("warikan/", warikan, name="warikan"),
+    path("savings/", savings, name="savings"),
+    path("calculator/", calculator, name="calculator"),
 ]
