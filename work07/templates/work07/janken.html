@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>じゃんけんゲーム</title>
+    <link rel="stylesheet" href="{% static 'work07/css/janken.css' %}">
+</head>
+<body>
+<div class="container">
+    <h1>じゃんけんゲーム</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="choice" value="グー" class="btn">グー</button>
+        <button type="submit" name="choice" value="チョキ" class="btn">チョキ</button>
+        <button type="submit" name="choice" value="パー" class="btn">パー</button>
+    </form>
+
+    {% if result %}
+        <p class="info">あなた: {{ user_choice }}</p>
+        <p class="info">コンピュータ: {{ computer_choice }}</p>
+        <p class="result">{{ result }}</p>
+    {% endif %}
+</div>
+<!-- トップページに戻るボタン -->
+<p>
+    <a href="{% url 'work07toppage' %}" class="back-btn">トップページに戻る</a>
+</p>
+</body>
+</html>

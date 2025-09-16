@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Hi & Lowゲーム</title>
+    <link rel="stylesheet" href="{% static 'work07/css/hi_low.css' %}">
+</head>
+<body>
+<div class="container">
+    <h1>Hi & Lowゲーム</h1>
+    <p>前回の数字: {{ last_number }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="guess" value="Hi" class="btn">Hi（大きい）</button>
+        <button type="submit" name="guess" value="Low" class="btn">Low（小さい）</button>
+    </form>
+
+    {% if message %}
+        <p class="result">{{ message }}</p>
+    {% endif %}
+
+    <!-- トップページに戻るボタン -->
+    <p><a href="{% url 'work07toppage' %}" class="back-btn">トップページに戻る</a></p>
+</div>
+</body>
+</html>

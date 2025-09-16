@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>おみくじ</title>
+    <link rel="stylesheet" href="{% static 'work07/css/omikuji.css' %}">
+</head>
+<body>
+<div class="container">
+    <h1>おみくじ</h1>
+
+    <!-- ボタンだけで送信 -->
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="omikuji-btn">おみくじを引く</button>
+    </form>
+
+    {% if omikuji_result %}
+        <p class="result">あなたの運勢は… <span>{{ omikuji_result }}</span> です！</p>
+    {% endif %}
+</div>
+<!-- トップページに戻るボタン -->
+<p>
+    <a href="{% url 'work07toppage' %}" class="back-btn">トップページに戻る</a>
+</p>
+</body>
+</html>

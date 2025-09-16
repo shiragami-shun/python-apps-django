@@ -62,3 +62,18 @@ button:hover {
     margin-top: 20px;
     color: #333333;
 }
+
+/* トップページに戻るボタン */
+.back-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.back-btn:hover {
+    background-color: #2980b9;
+}

@@ -67,3 +67,26 @@ h1 {
     font-weight: bold;
     color: #e74c3c;
 }
+
+.error {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #e74c3c;
+}
+
+/* トップページに戻るボタン */
+.back-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #95a5a6;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.back-btn:hover {
+    background-color: #7f8c8d;
+}

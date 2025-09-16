@@ -24,6 +24,9 @@ from work06.views import reiwa
 from work06.views import warikan
 from work06.views import savings
 from work06.views import calculator
+from work07.views import omikuji
+from work07.views import janken
+from work07.views import hi_low
 from django.shortcuts import render
 
 
@@ -31,14 +34,22 @@ def toppage(request):
     return render(request, "toppage.html")
 
 
+def work07toppage(request):
+    return render(request, "work07toppage.html")
+
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("index/", index),
     path("html/", html),
-    path("toppage/", toppage),
+    path("toppage/", toppage, name="toppage"),
+    path("top2/", work07toppage, name="work07toppage"),
     path("bmi/", bmi, name="bmi"),
     path("reiwa/", reiwa, name="reiwa"),
     path("warikan/", warikan, name="warikan"),
     path("savings/", savings, name="savings"),
     path("calculator/", calculator, name="calculator"),
+    path("omikuji/", omikuji, name="omikuji"),
+    path("janken/", janken, name="janken"),
+    path("hi_low/", hi_low, name="hi_low"),
 ]
