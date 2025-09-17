@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>全体トップページ</title>
+</head>
+<body>
+    <h1>全体トップページ</h1>
+    <ul>
+        <li><a href="{% url 'reiwa' %}">令和→西暦 変換ツール</a></li>
+        <li><a href="{% url 'bmi' %}">BMI計算ツール</a></li>
+        <li><a href="{% url 'warikan' %}">割り勘計算ツール</a></li>
+        <li><a href="{% url 'savings' %}">貯金計算ツール</a></li>
+        <li><a href="{% url 'calculator' %}">四則演算計算機</a></li>
+        <li><a href="{% url 'omikuji' %}">おみくじ</a></li>
+        <li><a href="{% url 'janken' %}">じゃんけん</a></li>
+        <li><a href="{% url 'hi_low' %}">Hi & Lowゲーム</a></li>
+        <!-- 他のアプリを追加したらここにリンクを足す -->
+    </ul>
+</body>
+</html>

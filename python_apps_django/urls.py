@@ -28,6 +28,7 @@ from work07.views import omikuji
 from work07.views import janken
 from work07.views import hi_low
 from django.shortcuts import render
+from myapp.views import top
 
 
 def toppage(request):
@@ -40,6 +41,7 @@ def work07toppage(request):
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", top, name="toppage"),
     path("index/", index),
     path("html/", html),
     path("toppage/", toppage, name="toppage"),

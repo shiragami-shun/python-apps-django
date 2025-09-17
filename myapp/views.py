@@ -11,3 +11,6 @@ def html(request):
     context = {"key": "value"}
     return render(request, "profile_shiragami_shun/index.html", context)
 
+
+def top(request):
+    return render(request, "top.html")
