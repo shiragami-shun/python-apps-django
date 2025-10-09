@@ -29,6 +29,7 @@ from work07.views import janken
 from work07.views import hi_low
 from django.shortcuts import render
 from myapp.views import top
+from django.urls import include
 
 
 def toppage(request):
@@ -54,4 +55,5 @@ urlpatterns = [
     path("omikuji/", omikuji, name="omikuji"),
     path("janken/", janken, name="janken"),
     path("hi_low/", hi_low, name="hi_low"),
+    path("work08/", include("work08.urls")),
 ]

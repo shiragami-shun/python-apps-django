@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "work06",
     "templates",
     "work07",
+    "work08",
 ]
 
 MIDDLEWARE = [

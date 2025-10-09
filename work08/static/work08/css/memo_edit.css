@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    max-width: 700px;
+    width: 92%;
+    margin: 60px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #444;
+}
+
+.memo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.memo-form input[type="text"],
+.memo-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+}
+
+.memo-form textarea {
+    height: 200px;
+    resize: vertical;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn.save {
+    background: #28a745;
+}
+
+.btn.save:hover {
+    background: #1f8a36;
+}
+
+.btn.back {
+    background: #0078d7;
+    display: inline-block;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn.back:hover {
+    background: #005fa3;
+}

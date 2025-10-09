@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>メモ編集</title>
+    <link rel="stylesheet" href="{% static 'work08/css/memo_edit.css' %}">
+</head>
+<body>
+<div class="container">
+    <h1>✏️ メモ編集</h1>
+
+    <form method="post" class="memo-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn save">💾 保存</button>
+    </form>
+
+    <a href="{% url 'memo_list' %}" class="btn back">← 一覧に戻る</a>
+</div>
+</body>
+</html>

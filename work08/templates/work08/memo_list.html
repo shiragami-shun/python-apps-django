@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>メモ一覧</title>
+    <link rel="stylesheet" href="{% static 'work08/css/memo_list.css' %}">
+</head>
+<body>
+<div class="container">
+    <h1>🗒 メモ一覧</h1>
+    <a href="{% url 'memo_create' %}" class="btn new">＋ 新規メモ作成</a>
+
+    <div class="memo-list">
+        {% for memo in memos %}
+        <div class="memo-card">
+            <a href="{% url 'memo_edit' memo.pk %}">
+                <h2>{{ memo.title }}</h2>
+                <p>{{ memo.content|truncatechars:100 }}</p>
+                <span class="date">{{ memo.created_at|date:"Y/m/d H:i" }}</span>
+            </a>
+        </div>
+        {% empty %}
+        <p class="empty">まだメモがありません。</p>
+        {% endfor %}
+    </div>
+</div>
+</body>
+</html>
