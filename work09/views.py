@@ -45,3 +45,6 @@ def todo_delete(request, pk):
     todo = get_object_or_404(Todo, pk=pk)
     todo.delete()
     return redirect('todo_list')
+
+
+todos = Todo.objects.using('work09').all()

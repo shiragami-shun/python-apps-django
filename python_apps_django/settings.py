@@ -83,7 +83,18 @@ WSGI_APPLICATION = "python_apps_django.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'work08',       # ← データベース名を work08 に変更
+        'NAME': 'work08',
+        'USER': 'root',
+        'PASSWORD': 'Shun13579',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
+    },
+    'work09': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'work09',
         'USER': 'root',
         'PASSWORD': 'Shun13579',
         'HOST': 'localhost',
