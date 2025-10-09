@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>タスク編集</title>
+    <link rel="stylesheet" href="{% static 'work09/css/edit.css' %}">
+</head>
+<body>
+    <h1>タスク編集</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+        <label>タイトル:</label><br>
+        <input type="text" name="title" value="{{ todo.title }}" required><br><br>
+
+        <label>期限日:</label><br>
+        <input type="date" name="due_date" value="{{ todo.due_date|date:'Y-m-d' }}" required><br><br>
+
+        <label>完了:</label>
+        <input type="checkbox" name="is_completed" {% if todo.is_completed %}checked{% endif %}><br><br>
+
+        <button type="submit" name="update">更新</button>
+        <button type="submit" name="delete" onclick="return confirm('本当に削除しますか？');">削除</button>
+    </form>
+
+    <p><a href="{% url 'todo_list' %}">一覧に戻る</a></p>
+</body>
+</html>

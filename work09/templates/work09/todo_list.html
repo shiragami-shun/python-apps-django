@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>TODOリスト</title>
+    <link rel="stylesheet" href="{% static 'work09/css/list.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🗓 TODOリスト</h1>
+            <p class="subtitle">今日のタスクを整理して、効率よく進めましょう</p>
+        </header>
+
+        <!-- 新規追加フォーム -->
+        <section class="form-section">
+            <form method="POST">
+                {% csrf_token %}
+                <input type="text" name="title" placeholder="タスク名を入力" required>
+                <input type="date" name="due_date" required>
+                <button type="submit">＋ 追加</button>
+            </form>
+        </section>
+
+        <!-- 一覧表示 -->
+        <section class="list-section">
+            {% if todos %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>状態</th>
+                            <th>タスク名</th>
+                            <th>期限日</th>
+                            <th>登録日</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for todo in todos %}
+                        <tr class="{% if todo.is_completed %}completed{% endif %}">
+                            <td>
+                                {% if todo.is_completed %}
+                                    ✅ 完了
+                                {% else %}
+                                    ⏳ 未完了
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{% url 'todo_edit' todo.pk %}">{{ todo.title }}</a>
+                            </td>
+                            <td>{{ todo.due_date }}</td>
+                            <td>{{ todo.created_at|date:"Y-m-d" }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p class="no-task">まだタスクがありません。新しいタスクを追加しましょう！</p>
+            {% endif %}
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Work09 TODOアプリ</p>
+        </footer>
+    </div>
+</body>
+</html>
