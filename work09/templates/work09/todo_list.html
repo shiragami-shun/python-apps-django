@@ -59,6 +59,31 @@
             {% endif %}
         </section>
 
+        <h3>ソート:</h3>
+        <div class="sort-links">
+            <a href="?sort=created_at{% if filter_status %}&filter={{ filter_status }}{% endif %}">登録日昇順</a> |
+            <a href="?sort=-created_at{% if filter_status %}&filter={{ filter_status }}{% endif %}">登録日降順</a> |
+            <a href="?sort=due_date{% if filter_status %}&filter={{ filter_status }}{% endif %}">期限日昇順</a> |
+            <a href="?sort=-due_date{% if filter_status %}&filter={{ filter_status }}{% endif %}">期限日降順</a>
+        </div>
+
+        <h3>フィルタ:</h3>
+        <div class="filter-links">  
+            <a href="?{% if sort_by %}sort={{ sort_by }}&{% endif %}">全て表示</a> |
+            <a href="?filter=complete{% if sort_by %}&sort={{ sort_by }}{% endif %}">完了済みのみ</a> |
+            <a href="?filter=incomplete{% if sort_by %}&sort={{ sort_by }}{% endif %}">未完了のみ</a>
+        </div>
+        <ul>
+          {% for todo in todos %}
+          <li>
+            {{ todo.title }} - {{ todo.due_date }} - 
+            {% if todo.is_completed %}完了{% else %}未完了{% endif %}
+          </li>
+            {% empty %}
+          <li>データがありません</li>
+            {% endfor %}
+          </ul>
+
         <footer>
             <p>&copy; 2025 Work09 TODOアプリ</p>
         </footer>

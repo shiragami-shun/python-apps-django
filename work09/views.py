@@ -4,14 +4,40 @@ from .models import Todo
 
 # 一覧画面（Read）
 def todo_list(request):
-    todos = Todo.objects.using('work09').all().order_by('due_date')
+    sort_by = request.GET.get('sort', 'due_date')  # sortパラメータ
+    filter_status = request.GET.get('filter', 'all')  # filterパラメータ
+
+    todos = Todo.objects.using('work09').all()
+
+    # フィルタ
+    if filter_status == 'incomplete':
+        todos = todos.filter(is_completed=False)
+    elif filter_status == 'complete':
+        todos = todos.filter(is_completed=True)
+
+    # ソート
+    if sort_by == 'created_at':
+        todos = todos.order_by('created_at')
+    elif sort_by == '-created_at':
+        todos = todos.order_by('-created_at')
+    elif sort_by == 'due_date':
+        todos = todos.order_by('due_date')
+    elif sort_by == '-due_date':
+        todos = todos.order_by('-due_date')
+
     if request.method == 'POST':
         title = request.POST.get('title')
         due_date = request.POST.get('due_date')
         if title and due_date:
             Todo.objects.using('work09').create(title=title, due_date=due_date)
         return redirect('todo_list')
-    return render(request, 'work09/todo_list.html', {'todos': todos})
+
+    context = {
+        'todos': todos,
+        'sort_by': sort_by,
+        'filter_status': filter_status,
+    }
+    return render(request, 'work09/todo_list.html', context)
 
 
 # 作成画面（Create）→ 今回は一覧ページにフォームがあるので個別画面は省略可
