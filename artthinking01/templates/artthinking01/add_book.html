@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>本を追加 | ネッ図書館</title>
+    <link rel="stylesheet" href="{% static 'artthinking01/css/add_book.css' %}">
+</head>
+<body>
+    <header>
+        <h1>📘 本を追加</h1>
+        <nav><a href="{% url 'home' %}">🏠 ホームに戻る</a></nav>
+    </header>
+
+    <main class="form-container">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">登録する</button>
+        </form>
+    </main>
+
+    <footer><p>© 2025 ネッ図書館</p></footer>
+</body>
+</html>

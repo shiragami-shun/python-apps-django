@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ネッ図書館 | ホーム</title>
+    <link rel="stylesheet" href="{% static 'artthinking01/css/home.css' %}">
+</head>
+<body>
+    <header>
+        <h1>📖 ネッ図書館</h1>
+        <p>ようこそ、知識の世界へ</p>
+    </header>
+
+    <main>
+        <div class="menu-grid">
+            <a href="{% url 'translate' %}" class="menu-card">
+                <h2>🌐 翻訳</h2>
+                <p>本や文章を多言語に翻訳できます</p>
+            </a>
+
+            <a href="{% url 'ranking' %}" class="menu-card">
+                <h2>🏆 ランキング</h2>
+                <p>人気の本やおすすめをチェック</p>
+            </a>
+
+            <a href="{% url 'timeline' %}" class="menu-card">
+                <h2>🕒 タイムライン</h2>
+                <p>読書活動を共有しよう</p>
+            </a>
+
+            <a href="{% url 'favorites' %}" class="menu-card">
+                <h2>❤️ お気に入り</h2>
+                <p>好きな本をコレクションに追加</p>
+            </a>
+
+            <a href="{% url 'add_book' %}" class="menu-card">
+                <h2>➕ 本を追加</h2>
+                <p>新しい本を図書館に登録</p>
+            </a>
+
+            <a href="{% url 'book_list' %}" class="menu-card">
+                <h2>📚 本一覧</h2>
+                <p>図書館の全ての本を閲覧</p>
+            </a>
+
+            <a href="{% url 'add_timeline' %}" class="menu-card">
+                <h2>➕ タイムライン追加</h2>
+                <p>新しい読書活動を投稿</p>
+            </a>
+        </div>
+    </main>
+    <footer>
+        <p>© 2025 ネッ図書館</p>
+    </footer>
+</body>
+</html>

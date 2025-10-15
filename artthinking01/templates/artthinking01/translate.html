@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ネット図書館 | 翻訳</title>
+    <link rel="stylesheet" href="{% static 'artthinking01/css/translate.css' %}">
+</head>
+<body>
+    <header>
+        <h1>🌐 翻訳</h1>
+        <p>本や文章を多言語に翻訳できます</p>
+        <nav>
+            <a href="{% url 'home' %}">🏠 ホームへ戻る</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="translate-container">
+            <textarea id="inputText" placeholder="ここに翻訳したい文章を入力してください"></textarea>
+
+            <div class="translate-controls">
+                <label for="languageSelect">翻訳先の言語：</label>
+                <select id="languageSelect">
+                    <option value="en">英語</option>
+                    <option value="ja">日本語</option>
+                    <option value="ko">韓国語</option>
+                    <option value="es">スペイン語</option>
+                    <option value="fr">フランス語</option>
+                    <option value="de">ドイツ語</option>
+                    <option value="zh-Hans">中国語（簡体字）</option>
+                    <option value="zh-Hant">中国語（繁体字）</option>
+                </select>
+                <button id="translateBtn">翻訳する</button>
+            </div>
+
+            <div class="result-card">
+                <h3>翻訳結果：</h3>
+                <div id="outputText"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 ネッ図書館</p>
+    </footer>
+
+    <script src="{% static 'artthinking01/js/translate.js' %}"></script>
+</body>
+</html>

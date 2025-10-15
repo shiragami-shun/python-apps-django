@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ランキング | ネット図書館</title>
+    <link rel="stylesheet" href="{% static 'artthinking01/css/ranking.css' %}">
+</head>
+<body>
+    <header>
+        <h1>🏆 人気ランキング</h1>
+        <p>今、最も読まれている本をチェックしよう</p>
+        <nav>
+            <a href="{% url 'home' %}">🏠 ホームへ戻る</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="ranking-container">
+            {% for book in books %}
+            <div class="ranking-card">
+                <div class="rank-number">{{ forloop.counter }}</div>
+                <div class="rank-info">
+                    <h2>{{ book.title }}</h2>
+                    <p class="author">{{ book.author }}</p>
+                    <p class="desc">{{ book.description }}</p>
+                </div>
+            </div>
+            {% empty %}
+            <p class="no-data">📚 ランキングデータがありません。</p>
+            {% endfor %}
+        </div>
+    </main>
+    <footer>
+        <p>© 2025 ネッ図書館</p>
+    </footer>
+</body>
+</html>

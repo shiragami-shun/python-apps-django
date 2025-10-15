@@ -1,0 +1,53 @@
+body {
+    font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+    margin: 0;
+    background: #f9fafb;
+    color: #333;
+}
+
+header {
+    text-align: center;
+    padding: 60px 20px 30px;
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    color: white;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.1em;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    padding: 40px 10%;
+}
+
+.menu-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 30px 20px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.menu-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+    font-size: 0.9em;
+    background: #f1f1f1;
+}

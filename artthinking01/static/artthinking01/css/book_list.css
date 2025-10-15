@@ -1,0 +1,128 @@
+body {
+    font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+    margin: 0;
+    background: #f9fafb;
+    color: #333;
+}
+
+/* ヘッダー */
+header {
+    text-align: center;
+    padding: 60px 20px 30px;
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    color: white; /* 文字を白色に */
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.1em;
+}
+
+/* ナビゲーションリンク（ホームに戻るボタン） */
+header nav {
+    margin-top: 15px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 14px;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+header nav a:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+/* メイン部分 */
+main {
+    max-width: 980px;
+    width: 92%;
+    margin: 30px auto;
+}
+
+/* 本のカード */
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.book-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.book-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.book-card h2 {
+    font-size: 1.3rem;
+    margin: 0 0 8px;
+}
+
+.book-card p {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin: 5px 0;
+}
+
+.book-actions {
+    margin-top: 12px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.edit-btn, .delete-btn {
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.2s ease;
+}
+
+.edit-btn {
+    background-color: #4f46e5;
+}
+
+.edit-btn:hover {
+    background-color: #4338ca;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+    font-size: 0.9em;
+    background: #f1f1f1;
+}
+
+/* レスポンシブ */
+@media (max-width: 600px) {
+    .book-grid {
+        grid-template-columns: 1fr;
+    }
+}

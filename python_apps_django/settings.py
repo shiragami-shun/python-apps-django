@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "work07",
     "work08",
     "work09",
+    "artthinking01",
 ]
 
 MIDDLEWARE = [
@@ -101,6 +102,16 @@ DATABASES = {
         'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        }
+    },
+    'artthinking01': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'artthinking01',
+        'USER': 'root',
+        'PASSWORD': 'Shun13579',
+        'HOST': 'localhost',
+        'PORT': '3306',
+        'OPTIONS': {
         }
     }
 }
