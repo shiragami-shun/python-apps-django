@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ログイン成功 | Work10</title>
+    <link rel="stylesheet" href="{% static 'work10/css/login_success.css' %}">
+</head>
+<body>
+    <header>
+        <h1>✅ ログイン成功</h1>
+    </header>
+
+    <main>
+        <p>ようこそ、<strong>{{ user.username }}</strong> さん！</p>
+        <a href="{% url 'work10_logout' %}" class="logout-btn">ログアウト</a>
+    </main>
+</body>
+</html>

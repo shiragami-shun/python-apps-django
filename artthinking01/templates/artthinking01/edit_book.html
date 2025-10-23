@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>本を編集</title>
+    <link rel="stylesheet" href="{% static 'artthinking01/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'artthinking01/css/edit_book.css' %}">
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header class="header">
+        <h1>📖 本を編集</h1>
+        <nav>
+            <a href="{% url 'timeline' %}">タイムライン</a>
+            <a href="{% url 'add_book' %}">本を追加</a>
+            <a href="{% url 'home' %}">ホームに戻る</a>
+        </nav>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="translate-container edit-book-container">
+    <h1>📖 本を編集</h1>
+
+    <form method="post" class="translate-controls edit-book-form">
+        {% csrf_token %}
+
+        <label for="title">タイトル</label>
+        <input type="text" id="title" name="title" value="{{ book.title }}" required>
+
+        <label for="author">著者</label>
+        <input type="text" id="author" name="author" value="{{ book.author }}" required>
+
+        <label for="description">説明</label>
+        <textarea id="description" name="description">{{ book.description }}</textarea>
+
+        <label for="category">カテゴリ</label>
+        <input type="text" id="category" name="category" value="{{ book.category }}">
+
+        <label for="cover_image">カバー画像</label>
+        {% if book.cover_image %}
+        <img src="{{ book.cover_image.url }}" alt="カバー画像" style="max-width:200px; display:block; margin-bottom:10px;">
+        {% endif %}
+        {{ form.cover_image }}
+
+
+        <div class="form-buttons">
+            <button type="submit">保存</button>
+        </div>
+    </form>
+</main>
+
+
+    <footer>
+        <p>© 2025 ネッ図書館</p>
+    </footer>
+</body>
+</html>

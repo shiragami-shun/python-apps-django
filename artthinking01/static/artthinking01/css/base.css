@@ -1,0 +1,46 @@
+body {
+    font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+    margin: 0;
+    background: #f9fafb;
+    color: #333;
+}
+
+/* ヘッダー */
+header {
+    text-align: center;
+    padding: 60px 20px 30px;
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    color: white;
+}
+
+.header-nav {
+    margin-top: 15px;
+}
+
+.header-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 14px;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.header-nav a:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.header-title {
+    font-size: 2rem;
+    margin: 0;
+}
+
+/* フッター */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+    font-size: 0.9em;
+    background: #f1f1f1;
+}

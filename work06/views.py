@@ -60,7 +60,7 @@ def savings(request):
         form = SavingsForm(request.POST)
         if form.is_valid():
             monthly = form.cleaned_data['monthly_amount']
-            years = form.cleaned_data['years']      
+            years = form.cleaned_data['years']
             total = 0
             for year in range(1, years + 1):
                 total += monthly * 12

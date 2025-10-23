@@ -1,0 +1,140 @@
+/* 全体 */
+body {
+  font-family: "Hiragino Sans", "Noto Sans JP", sans-serif;
+  background-color: #f4f6f8;
+  margin: 0;
+  padding: 0;
+}
+
+/* ヘッダー */
+header {
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 4px solid #2f5fa6;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* ボタン（ヘッダー） */
+.home-btn {
+  background-color: #5ca4ea;
+  color: white;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.home-btn:hover {
+  background-color: #4a90e2;
+}
+
+.logout-btn {
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.logout-btn:hover {
+  background-color: #ff4c4c;
+}
+
+.subtitle {
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
+/* 編集カード */
+.content-width {
+  max-width: 600px;
+  margin: 40px auto;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+.edit-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="date"] {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+/* チェックボックス */
+.checkbox-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+/* ボタン */
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.save-btn {
+  background-color: #3a7bd5;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.save-btn:hover {
+  background-color: #2f5fa6;
+}
+
+.cancel-btn {
+  background-color: #ddd;
+  color: #333;
+  text-decoration: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.cancel-btn:hover {
+  background-color: #bbb;
+}
+
+/* フッター */
+footer {
+  text-align: center;
+  color: #777;
+  margin-top: 40px;
+  padding-bottom: 20px;
+}

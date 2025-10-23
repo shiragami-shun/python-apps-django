@@ -2,44 +2,45 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>タイムライン</title>
-<link rel="stylesheet" href="{% static 'artthinking01/css/add_timeline.css' %}">
+    <meta charset="UTF-8">
+    <title>タイムライン</title>
+    <link rel="stylesheet" href="{% static 'artthinking01/css/add_timeline.css' %}">
 </head>
 <body>
 
-<header>
-    <h1>📣 タイムライン</h1>
-    <p>みんなの投稿をチェック！</p>
-    <nav>
-        <a href="{% url 'home' %}">🏠 ホームに戻る</a>
-    </nav>
-</header>
+    <header>
+        <h1>🕒 タイムライン</h1>
+        <p>読書やアイデアを共有しよう</p>
+        <nav>
+            <a href="{% url 'home' %}">🏠 ホームへ戻る</a>
+        </nav>
+    </header>
 
-<main>
-    <section class="post-form">
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">投稿する</button>
-        </form>
-    </section>
+    <main>
+        <!-- 投稿フォーム -->
+        <section class="timeline-form">
+            <h2>💭 新しい投稿を追加</h2>
+            <form method="post" action="{% url 'add_timeline' %}">
+                {% csrf_token %}
+                <label for="content">投稿内容</label>
+                <textarea id="content" name="content" placeholder="今日は何を感じましたか？" required></textarea>
+                <button type="submit">投稿する</button>
+            </form>
+        </section>
 
-    <section class="post-list">
-        <div class="card-grid">
+        <!-- 投稿一覧 -->
+        <section class="timeline-list">
+            <h2>📜 みんなの投稿</h2>
             {% for post in posts %}
-            <div class="card">
-                <p>{{ post.content }}</p>
-                <small>{{ post.author|default:"匿名" }} - {{ post.created_at|date:"Y/m/d H:i" }}</small>
-            </div>
+                <div class="timeline-item">
+                    <p>{{ post.content|linebreaksbr }}</p>
+                    <time>{{ post.date|date:"Y/m/d H:i" }}</time>
+                </div>
             {% empty %}
-            <p>まだ投稿はありません。</p>
+                <p class="no-data">📚 まだ投稿がありません。</p>
             {% endfor %}
-        </div>
-    </section>
-    <footer>
-        <p>© 2025 ネッ図書館</p>
-    </footer>
-</main>
+        </section>
+    </main>
+
 </body>
 </html>

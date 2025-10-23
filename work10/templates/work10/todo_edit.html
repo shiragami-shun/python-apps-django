@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>タスク編集</title>
+    <link rel="stylesheet" href="{% static 'work10/css/todo_edit.css' %}">
+</head>
+<body>
+    <div>
+        <!-- ヘッダー -->
+        <header>
+            <div class="header-top">
+                <h1>✏️ タスクを編集</h1>
+                <div class="header-buttons">
+                    <a href="{% url 'todo_home' %}" class="home-btn">🏠 ホーム</a>
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="logout-btn">ログアウト</button>
+                    </form>
+                </div>
+            </div>
+            <p class="subtitle">{{ user.username }} さん、タスクを更新してください。</p>
+        </header>
+
+        <!-- メインコンテンツ -->
+        <div class="content-width">
+            <div class="edit-card">
+                <form method="POST" class="form-flex">
+                    {% csrf_token %}
+
+                    <!-- タスク名 -->
+                    <label for="title">タスク名</label>
+                    <input type="text" id="title" name="title" value="{{ form.title.value }}" placeholder="タスク名を入力" required>
+
+                    <!-- 期限日 -->
+                    <label for="due_date">期限日</label>
+                    <input type="date" id="due_date" name="due_date" value="{{ form.due_date.value|date:'Y-m-d' }}" required>
+
+                    <!-- 完了チェック -->
+                    <label for="completed">状態</label>
+                    <div class="checkbox-wrap">
+                        <input type="checkbox" id="completed" name="completed" {% if form.completed.value %}checked{% endif %}>
+                        <label for="completed">完了済みにする</label>
+                    </div>
+
+                    <!-- ボタン -->
+                    <div class="btn-group">
+                        <button type="submit" class="save-btn">💾 保存</button>
+                        <a href="{% url 'todo_home' %}" class="cancel-btn">キャンセル</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- フッター -->
+        <footer>
+            <p>©︎ 2025 Work10 TODOアプリ</p>
+        </footer>
+    </div>
+</body>
+</html>

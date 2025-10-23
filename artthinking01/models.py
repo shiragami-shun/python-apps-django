@@ -1,6 +1,7 @@
 # artthinking01/models.py
 from django.db import models
 from django.utils import timezone
+from django.shortcuts import render
 
 
 class TimelinePost(models.Model):
@@ -13,16 +14,17 @@ class TimelinePost(models.Model):
 
 
 class Book(models.Model):
-    title = models.CharField(max_length=255)
-    author = models.CharField(max_length=255)
-    description = models.TextField(blank=True, null=True)
-    cover_image = models.ImageField(
-        upload_to='covers/', blank=True, null=True
-        )  # 画像
-    category = models.CharField(max_length=100, blank=True, null=True)  # カテゴリ
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    title = models.CharField(max_length=200)
+    author = models.CharField(max_length=100)
+    category = models.CharField(max_length=100)
+    description = models.TextField(blank=True)
+    cover_image = models.ImageField(upload_to='covers/', blank=True, null=True)
 
-    class Meta:
-        db_table = 'books'
-        managed = False
+    def __str__(self):
+        return self.title
+
+
+def book_list(request):
+    books = Book.objects.using('artthinking01').all()
+    return render(request, 'artthinking01/book_list.html', {'books': books})
+

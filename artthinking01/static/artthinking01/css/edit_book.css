@@ -1,0 +1,88 @@
+.edit-book-container {
+    max-width: 750px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.edit-book-form label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.edit-book-form input,
+.edit-book-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+.form-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 12px;
+}
+
+.form-buttons button,
+.form-buttons .cancel-button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    background-color: #4f46e5;
+    text-align: center;
+    transition: background 0.3s;
+}
+
+.form-buttons button:hover,
+.form-buttons .cancel-button:hover {
+    background-color: #4338ca;
+}
+
+/* ヘッダー */
+header {
+    text-align: center;
+    padding: 60px 20px 30px;
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    color: white;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+/* ナビゲーション */
+header nav {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 12px; /* ボタン間のスペース */
+    list-style: none; /* 左の・を消す */
+    padding: 0;
+}
+
+header nav a {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 14px;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+header nav a:hover {
+    background: rgba(255, 255, 255, 0.35);
+}

@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>TODOリスト</title>
+    <link rel="stylesheet" href="{% static 'work10/css/todo_home.css' %}">
+</head>
+<body>
+    <div>
+        <header>
+            <div class="header-top">
+                <h1>🗓 {{ user.username }} さんのTODOリスト</h1>
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="logout-btn">ログアウト</button>
+                </form>
+            </div>
+            <p class="subtitle">今日のタスクを整理して、効率よく進めましょう</p>
+        </header>
+
+        <div class="content-width">
+            <!-- 新規追加フォーム -->
+            <form method="POST" class="form-flex">
+                {% csrf_token %}
+                <!-- タスク名は手入力で必須 -->
+                <input type="text" name="title" placeholder="タスク名を入力" required>
+
+                <!-- 期限日はカレンダーから選択 -->
+                <input type="date" name="due_date">
+
+                <button type="submit" class="small-btn">＋ 追加</button>
+            </form>
+
+            <!-- タスク名が空の場合のエラーメッセージ -->
+            {% if error_message %}
+                <p class="error">{{ error_message }}</p>
+            {% endif %}
+
+            <!-- TODO一覧 -->
+            <section class="list-section">
+                {% if todos %}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>状態</th>
+                                <th>タスク名</th>
+                                <th>期限日</th>
+                                <th>登録日</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for todo in todos %}
+                            <tr class="{% if todo.completed %}completed{% endif %}">
+                                <td>
+                                    {% if todo.completed %}
+                                        ✅ 完了
+                                    {% else %}
+                                        ⏳ 未完了
+                                    {% endif %}
+                                </td>
+                                <td>{{ todo.title }}</td>
+                                <td>{{ todo.due_date }}</td>
+                                <td>{{ todo.created_at|date:"Y-m-d" }}</td>
+                                <td>
+                                    <form method="get" action="{% url 'todo_edit' todo.id %}">
+                                    <button type="submit" class="edit-btn">編集</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form method="post" action="{% url 'todo_delete' todo.id %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="delete-btn">削除</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                    <p class="no-task">まだタスクがありません。新しいタスクを追加しましょう！</p>
+                {% endif %}
+            </section>
+        </div>
+
+        <footer>
+            <p>©︎ 2025 Work10 TODOアプリ</p>
+        </footer>
+    </div>
+</body>
+</html>

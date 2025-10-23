@@ -16,8 +16,8 @@
         <!-- 新規追加フォーム -->
         <section class="form-section">
             <form method="POST">
-                {% csrf_token %}
-                <input type="text" name="title" placeholder="タスク名を入力" required>
+                {% csrf_token %}<input type="text" name="title" placeholder="タスク名を入力" required>
+                
                 <input type="date" name="due_date" required>
                 <button type="submit">＋ 追加</button>
             </form>

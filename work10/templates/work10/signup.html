@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ユーザー登録 | Work10</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'work10/css/signup.css' %}">
+</head>
+<body>
+    <header>
+        <h1>📝 新規ユーザー登録</h1>
+    </header>
+
+    <main class="signup-container">
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <form method="POST">
+            {% csrf_token %}
+            <label>ユーザー名:</label>
+            <input type="text" name="username" required>
+
+            <label>パスワード:</label>
+            <input type="password" name="password" required>
+
+            <label>パスワード（確認）:</label>
+            <input type="password" name="password_confirm" required>
+
+            <button type="submit">登録</button>
+        </form>
+
+        <p class="link">既にアカウントをお持ちですか？ <a href="{% url 'login' %}">ログインはこちら</a></p>
+    </main>
+</body>
+</html>
