@@ -149,3 +149,11 @@ main {
     color: #777;
     text-align: right;
 }
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+    font-size: 0.9em;
+    background: #f1f1f1;
+}

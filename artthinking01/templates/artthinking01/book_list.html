@@ -26,6 +26,7 @@
                     <div class="book-actions">
                         <a href="{% url 'edit_book' book.pk %}" class="edit-btn">✏️ 編集</a>
                         <a href="{% url 'delete_book' book.pk %}" class="delete-btn">🗑️ 削除</a>
+                        <a href="{% url 'favorite_book' book.pk %}" class="favorite-btn">❤️ お気に入り ({{ book.favorites }})</a>
                     </div>
                 </div>
                 {% endfor %}

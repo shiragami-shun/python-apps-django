@@ -7,8 +7,8 @@ from .models import Book
 from .forms import BookForm
 from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
-from .models import TimelinePost
-from .forms import TimelinePostForm
+from .models import Post
+from django.db import connections
 
 
 def home(request):
@@ -25,15 +25,57 @@ def translate(request):
 
 
 def ranking(request):
-    return render(request, "artthinking01/ranking.html")
+    # お気に入り数が多い順に並べる
+    books = Book.objects.using('artthinking01').all().order_by('-favorites')
+    
+    return render(request, "artthinking01/ranking.html", {"books": books})
 
 
 def timeline(request):
-    return render(request, "artthinking01/timeline.html")
+    """artthinking01 データベースの Post テーブルから投稿を取得して表示"""
+
+    posts = []  # 投稿データを入れるリスト
+
+    try:
+        # ここで artthinking01 データベースに接続
+        with connections['artthinking01'].cursor() as cursor:
+            cursor.execute("""
+                SELECT id, name, title, content, date
+                FROM artthinking01_post
+                ORDER BY date DESC;
+            """)
+            rows = cursor.fetchall()  # 全行を取得
+
+            # rows を辞書形式に変換して扱いやすくする
+            for row in rows:
+                posts.append({
+                    'id': row[0],
+                    'name': row[1],
+                    'title': row[2],
+                    'content': row[3],
+                    'date': row[4],
+                })
+
+    except Exception as e:
+        print("❌ 投稿データ取得エラー:", e)
+
+    # 投稿データをテンプレートに渡す
+    return render(request, 'artthinking01/timeline.html', {'posts': posts})
 
 
 def favorites(request):
-    return render(request, "artthinking01/favorites.html")
+    """お気に入りに登録された本を表示"""
+    try:
+        favorites = Book.objects.using(
+            'artthinking01'
+            ).filter(favorites__gt=0).order_by('-favorites')
+    except Exception as e:
+        print("❌ お気に入り取得エラー:", e)
+        favorites = []
+
+    return render(
+        request, 'artthinking01/favorites.html', {'favorites': favorites}
+        )
 
 
 @csrf_exempt
@@ -71,17 +113,22 @@ def translate_api(request):
 
 def add_timeline(request):
     if request.method == 'POST':
-        form = TimelinePostForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('timeline')  # 投稿後に自分のページへリダイレクト
-    else:
-        form = TimelinePostForm()
-    posts = TimelinePost.objects.order_by('-created_at')  # 新しい順
-    return render(
-        request, 'artthinking01/add_timeline.html',
-        {'form': form, 'posts': posts}
-        )
+        name = request.POST.get('name')
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+
+        if name and title and content:
+            # artthinking01 データベースに保存
+            Post.objects.using('artthinking01').create(
+                name=name,
+                title=title,
+                content=content
+            )
+            return redirect('add_timeline')
+
+    # 投稿一覧を artthinking01 から取得
+    posts = Post.objects.using('artthinking01').all().order_by('-date')
+    return render(request, 'artthinking01/add_timeline.html', {'posts': posts})
 
 
 def add_book(request):
@@ -121,3 +168,14 @@ def edit_book(request, pk):
         'artthinking01/edit_book.html',
         {'form': form, 'book': book}
     )
+
+
+def favorite_book(request, pk):
+    """本をお気に入りに追加"""
+    try:
+        book = Book.objects.using('artthinking01').get(pk=pk)
+        book.favorites = (book.favorites or 0) + 1
+        book.save(using='artthinking01')
+    except Book.DoesNotExist:
+        pass  # 本が存在しない場合は無視
+    return redirect('book_list')

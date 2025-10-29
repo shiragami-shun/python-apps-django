@@ -12,6 +12,7 @@
         <p>読書の記録や感想をシェアしよう</p>
         <nav>
             <a href="{% url 'home' %}">🏠 ホームへ戻る</a>
+            <a href="{% url 'add_timeline' %}">✍ 投稿する</a>
         </nav>
     </header>
 
@@ -20,18 +21,22 @@
             {% for post in posts %}
             <div class="post-card">
                 <div class="post-header">
-                    <strong>{{ post.user }}</strong>
+                    <div class="post-user-info">
+                        <span class="post-name">👤 {{ post.name }}</span>
+                        <span class="post-title">📖 『{{ post.title }}』</span>
+                    </div>
                     <span class="date">{{ post.date|date:"Y/m/d H:i" }}</span>
                 </div>
-                <p class="content">{{ post.content }}</p>
+                <p class="content">{{ post.content|linebreaksbr }}</p>
             </div>
             {% empty %}
             <p class="no-data">📚 まだ投稿がありません。</p>
             {% endfor %}
         </div>
     </main>
+
     <footer>
-        <p>© 2025 ネッ図書館</p>
+        <p>© 2025 ネット図書館</p>
     </footer>
 </body>
 </html>

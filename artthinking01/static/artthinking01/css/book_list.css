@@ -10,7 +10,7 @@ header {
     text-align: center;
     padding: 60px 20px 30px;
     background: linear-gradient(135deg, #4f46e5, #9333ea);
-    color: white; /* 文字を白色に */
+    color: white;
 }
 
 header h1 {
@@ -87,7 +87,8 @@ main {
     gap: 10px;
 }
 
-.edit-btn, .delete-btn {
+/* 編集・削除ボタン */
+.edit-btn, .delete-btn, .favorite-btn {
     padding: 6px 12px;
     border-radius: 10px;
     font-size: 0.9rem;
@@ -112,6 +113,16 @@ main {
     background-color: #c0392b;
 }
 
+.favorite-btn {
+    background-color: #f87171
+}
+
+.favorite-btn:hover {
+    background-color: #ef4444;
+    transform: scale(1.05);
+}
+
+/* フッター */
 footer {
     text-align: center;
     padding: 20px;

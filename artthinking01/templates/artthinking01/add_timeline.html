@@ -3,7 +3,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>タイムライン</title>
+    <title>タイムライン | ネット図書館</title>
     <link rel="stylesheet" href="{% static 'artthinking01/css/add_timeline.css' %}">
 </head>
 <body>
@@ -22,25 +22,47 @@
             <h2>💭 新しい投稿を追加</h2>
             <form method="post" action="{% url 'add_timeline' %}">
                 {% csrf_token %}
-                <label for="content">投稿内容</label>
-                <textarea id="content" name="content" placeholder="今日は何を感じましたか？" required></textarea>
-                <button type="submit">投稿する</button>
+
+                <div class="form-group">
+                    <label for="name">お名前</label>
+                    <input id="name" type="text" name="name" placeholder="あなたの名前を入力" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="title">本のタイトル</label>
+                    <input id="title" type="text" name="title" placeholder="本のタイトルを入力" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="content">本の紹介文</label>
+                    <textarea id="content" name="content" placeholder="この本の魅力や感想を書いてください" required></textarea>
+                </div>
+
+                <button type="submit">📚 投稿する</button>
             </form>
         </section>
 
         <!-- 投稿一覧 -->
-        <section class="timeline-list">
+        <section class="timeline-container">
             <h2>📜 みんなの投稿</h2>
             {% for post in posts %}
-                <div class="timeline-item">
-                    <p>{{ post.content|linebreaksbr }}</p>
-                    <time>{{ post.date|date:"Y/m/d H:i" }}</time>
+                <div class="post-card">
+                    <div class="post-header">
+                        <strong class="post-name">👤 {{ post.name }}</strong>
+                        <span class="date">{{ post.date|date:"Y/m/d H:i" }}</span>
+                    </div>
+                    <p class="post-title">📖 『{{ post.title }}』</p>
+                    <p class="content">{{ post.content|linebreaksbr }}</p>
                 </div>
             {% empty %}
                 <p class="no-data">📚 まだ投稿がありません。</p>
             {% endfor %}
         </section>
     </main>
+
+    <footer>
+        <p>© 2025 ネット図書館</p>
+    </footer>
 
 </body>
 </html>
