@@ -14,10 +14,10 @@ class TimelinePost(models.Model):
 
 
 class Book(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
-    category = models.CharField(max_length=100)
-    description = models.TextField(blank=True)
+    category = models.CharField(max_length=100, default='未分類')
+    description = models.TextField(blank=True, null=True)
     cover_image = models.ImageField(upload_to='covers/', blank=True, null=True)
     favorites = models.IntegerField(default=0)  # ← お気に入りカウント
 
