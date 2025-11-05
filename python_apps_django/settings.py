@@ -32,8 +32,12 @@ SECRET_KEY = (
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
-
+ALLOWED_HOSTS = (
+  os.environ.get("ALLOWED_HOSTS") or ""
+).split(",")  # deploy for Railway
+CSRF_TRUSTED_ORIGINS = (
+  os.environ.get("CSRF_TRUSTED_ORIGINS") or ""
+  ).split(",")
 
 # Application definition
 
@@ -93,8 +97,8 @@ DATABASE_NAME = os.environ.get("DB_NAME")
 DATABASE_USER = os.environ.get("DB_USER")
 DATABASE_PASSWORD = os.environ.get("DB_PASSWORD")
 DATABASE_PORT = os.environ.get("DB_PORT") or "3306"
-DATABASES = {
 
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'work08',
