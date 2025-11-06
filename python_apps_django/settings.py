@@ -96,13 +96,21 @@ DATABASE_PORT = os.environ.get("DB_PORT") or "3306"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": "work08",
-        "USER": "root",
-        "PASSWORD": "Shun13579",
-        "HOST": "localhost",
-        "PORT": "3306",
-        "OPTIONS": {"init_command": "SET sql_mode='STRICT_TRANS_TABLES'"},
-    },
+        "NAME": DATABASE_NAME,
+        "USER": DATABASE_USER,
+        "PASSWORD": DATABASE_PASSWORD,
+        "HOST": DATABASE_HOST,
+        "PORT": DATABASE_PORT,
+    }
+    # "default": {
+    #     "ENGINE": "django.db.backends.mysql",
+    #     "NAME": "work08",
+    #     "USER": "root",
+    #     "PASSWORD": "Shun13579",
+    #     "HOST": "localhost",
+    #     "PORT": "3306",
+    #     "OPTIONS": {"init_command": "SET sql_mode='STRICT_TRANS_TABLES'"},
+    # },
     # 'work09': {
     #     'ENGINE': 'django.db.backends.mysql',
     #     'NAME': 'work09',
