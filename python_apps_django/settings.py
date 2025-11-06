@@ -30,8 +30,12 @@ SECRET_KEY = "django-insecure-1mk-ff^7we-@3n)dr%ho)v1&bzx=r&0kb6!+%u(og%yysk^p25
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = (os.environ.get("ALLOWED_HOSTS") or "").split(",")  # deploy for Railway
-CSRF_TRUSTED_ORIGINS = (os.environ.get("CSRF_TRUSTED_ORIGINS") or "").split(",")
+ALLOWED_HOSTS = (
+    os.environ.get("ALLOWED_HOSTS") or ""
+    ).split(",")  # deploy for Railway
+CSRF_TRUSTED_ORIGINS = (
+    os.environ.get("CSRF_TRUSTED_ORIGINS") or ""
+    ).split(",")
 
 # Application definition
 
@@ -154,13 +158,16 @@ AUTH_PASSWORD_VALIDATORS = [
         ),
     },
     {
-        "NAME": ("django.contrib.auth.password_validation." "MinimumLengthValidator"),
+        "NAME": ("django.contrib.auth.password_validation."
+                 "MinimumLengthValidator"),
     },
     {
-        "NAME": ("django.contrib.auth.password_validation." "CommonPasswordValidator"),
+        "NAME": ("django.contrib.auth.password_validation."
+                 "CommonPasswordValidator"),
     },
     {
-        "NAME": ("django.contrib.auth.password_validation." "NumericPasswordValidator"),
+        "NAME": ("django.contrib.auth.password_validation."
+                 "NumericPasswordValidator"),
     },
 ]
 
@@ -197,5 +204,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 if os.environ.get("ENABLE_BASIC_AUTH") or "false" == "true":
     MIDDLEWARE.append("basicauth.middleware.BasicAuthMiddleware")
     BASICAUTH_USERS = {
-        os.environ.get("BASIC_AUTH_USERNAME"): os.environ.get("BASIC_AUTH_PASSWORD"),
+        os.environ.get(
+            "BASIC_AUTH_USERNAME"
+            ): os.environ.get(
+                "BASIC_AUTH_PASSWORD"
+                ),
     }
