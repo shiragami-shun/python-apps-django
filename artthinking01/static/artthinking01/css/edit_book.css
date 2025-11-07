@@ -87,6 +87,13 @@ header nav a:hover {
     background: rgba(255, 255, 255, 0.35);
 }
 
+main {
+    max-width: 980px;
+    width: 92%;
+    margin: 30px auto;
+    padding-bottom: 90px;
+}
+
 .bottom-nav {
     position: fixed;
     bottom: 0;

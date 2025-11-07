@@ -40,9 +40,10 @@ header nav a:hover {
 
 /* メインコンテンツ */
 main {
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 20px;
+    max-width: 980px;
+    width: 92%;
+    margin: 30px auto;
+    padding-bottom: 90px;
 }
 
 /* 投稿フォーム */
