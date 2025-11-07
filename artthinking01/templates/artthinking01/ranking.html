@@ -32,6 +32,14 @@
             {% endfor %}
         </div>
     </main>
+    <nav class="bottom-nav">
+        <a href="{% url 'home' %}">🏠 ホーム</a>
+        <a href="{% url 'translate' %}">🌐 翻訳</a>
+        <a href="{% url 'ranking' %}">🏆 ランキング</a>
+        <a href="{% url 'timeline' %}">🕒 タイムライン</a>
+        <a href="{% url 'add_book'%}">➕ 本を追加</a>
+        <a href="{% url 'book_list' %}">📚 本一覧</a>
+    </nav>
     <footer>
         <p>© 2025 ネッ図書館</p>
     </footer>
