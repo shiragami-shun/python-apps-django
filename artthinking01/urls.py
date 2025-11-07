@@ -13,5 +13,6 @@ urlpatterns = [
     path('add_timeline/', views.add_timeline, name='add_timeline'),
     path('books/edit/<int:pk>/', views.edit_book, name='edit_book'),
     path('books/delete/<int:pk>/', views.delete_book, name='delete_book'),
+    path('profile/', views.profile, name='profile'),
     path('books/favorite/<int:pk>/', views.favorite_book, name='favorite_book')
 ]
