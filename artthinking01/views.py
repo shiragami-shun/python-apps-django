@@ -16,7 +16,7 @@ def home(request):
 
 
 def book_list(request):
-    books = Book.objects.using('artthinking01').all()  # ← データベースを指定
+    books = Book.objects.all()  # ← データベースを指定
     return render(request, "artthinking01/book_list.html", {"books": books})
 
 
@@ -26,7 +26,7 @@ def translate(request):
 
 def ranking(request):
     # お気に入り数が多い順に並べる
-    books = Book.objects.using('artthinking01').all().order_by('-favorites')
+    books = Book.objects.order_by('-favorites')
     
     return render(request, "artthinking01/ranking.html", {"books": books})
 
@@ -66,9 +66,7 @@ def timeline(request):
 def favorites(request):
     """お気に入りに登録された本を表示"""
     try:
-        favorites = Book.objects.using(
-            'artthinking01'
-            ).filter(favorites__gt=0).order_by('-favorites')
+        favorites = Book.objects.filter(favorites__gt=0).order_by('-favorites')
     except Exception as e:
         print("❌ お気に入り取得エラー:", e)
         favorites = []
@@ -119,7 +117,7 @@ def add_timeline(request):
 
         if name and title and content:
             # artthinking01 データベースに保存
-            Post.objects.using('artthinking01').create(
+            Post.objects.create(
                 name=name,
                 title=title,
                 content=content
@@ -138,7 +136,7 @@ def add_book(request):
             book = form.save(commit=False)
             # 通常 save() は default DB に保存されるので
             # .save(using='artthinking01') と指定する
-            book.save(using='artthinking01')
+            book.save()
             return redirect('book_list')
     else:
         form = BookForm()
@@ -146,20 +144,20 @@ def add_book(request):
 
 
 def delete_book(request, pk):
-    book = Book.objects.using('artthinking01').get(pk=pk)
-    book.delete(using='artthinking01')
+    book = Book.objects.get(pk=pk)
+    book.delete()
     return redirect('book_list')
 
 
 def edit_book(request, pk):
-    book = get_object_or_404(Book.objects.using('artthinking01'), pk=pk)
+    book = get_object_or_404(Book, pk=pk)
     if request.method == "POST":
         form = BookForm(
             request.POST, request.FILES, instance=book
             )  # request.FILESを追加
         if form.is_valid():
             book_instance = form.save(commit=False)
-            book_instance.save(using='artthinking01')
+            book_instance.save()
             return redirect('book_list')  # 保存後に本一覧へ
     else:
         form = BookForm(instance=book)
@@ -173,9 +171,9 @@ def edit_book(request, pk):
 def favorite_book(request, pk):
     """本をお気に入りに追加"""
     try:
-        book = Book.objects.using('artthinking01').get(pk=pk)
+        book = Book.objects.get(pk=pk)
         book.favorites = (book.favorites or 0) + 1
-        book.save(using='artthinking01')
+        book.save()
     except Book.DoesNotExist:
         pass  # 本が存在しない場合は無視
     return redirect('book_list')
