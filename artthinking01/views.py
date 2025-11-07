@@ -125,7 +125,7 @@ def add_timeline(request):
             return redirect('add_timeline')
 
     # 投稿一覧を artthinking01 から取得
-    posts = Post.objects.using('artthinking01').all().order_by('-date')
+    posts = Post.objects.all().order_by('-date')
     return render(request, 'artthinking01/add_timeline.html', {'posts': posts})
 
 
