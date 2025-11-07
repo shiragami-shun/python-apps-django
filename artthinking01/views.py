@@ -15,6 +15,10 @@ def home(request):
     return render(request, "artthinking01/home.html")
 
 
+def profile(request):
+    return render(request, "artthinking01/profile.html")
+
+
 def book_list(request):
     books = Book.objects.all()  # ← データベースを指定
     return render(request, "artthinking01/book_list.html", {"books": books})

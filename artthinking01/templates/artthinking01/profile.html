@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ネッ図書館 | プロフィール</title>
+    <link rel="stylesheet" href="{% static 'artthinking01/css/profile.css' %}">
+    <link rel="icon" href="{% static 'artthinking01/images/favicon.jpg' %}">
+</head>
+<body>
+    <header>
+        <h1>👤 プロフィール</h1>
+        <p>図書館スタッフ・開発者の紹介ページです</p>
+    </header>
+
+    <main>
+        <div class="menu-grid">
+            <div class="menu-card">
+                <h2>🧑 自己紹介</h2>
+                <p>こんにちは！ネッ図書館の管理・開発を担当している⚪︎⚪︎です。  
+                読書と技術を融合させ、知識を共有する場を作ることを目指しています。</p>
+            </div>
+
+            <div class="menu-card">
+                <h2>💡 スキル</h2>
+                <p>
+                    ・HTML / CSS / JavaScript<br>
+                    ・Python / Django<br>
+                    ・UI / UX デザイン<br>
+                    ・データベース設計・API開発
+                </p>
+            </div>
+
+            <div class="menu-card">
+                <h2>📚 好きな本のジャンル</h2>
+                <p>哲学、化学、天文学の書籍をよく読みます。</p>
+            </div>
+
+            <div class="menu-card">
+                <h2>🎯 目標</h2>
+                <p>人々が本を通して新しいアイデアや感動を共有できる、  
+                デジタル図書館を発展させていくことです。</p>
+            </div>
+
+            <a href="{% url 'home' %}" class="menu-card">
+                <h2>🏠 ホームへ戻る</h2>
+                <p>図書館のトップページに戻ります</p>
+            </a>
+        </div>
+    </main>
+    <nav class="bottom-nav">
+        <a href="{% url 'home' %}">🏠 ホーム</a>
+        <a href="{% url 'translate' %}">🌐 翻訳</a>
+        <a href="{% url 'ranking' %}">🏆 ランキング</a>
+        <a href="{% url 'timeline' %}">🕒 タイムライン</a>
+        <a href="{% url 'add_book'%}">➕ 本を追加</a>
+        <a href="{% url 'book_list' %}">📚 本一覧</a>
+        <a href="{% url 'profile' %}">👤 プロフィール</a>
+    </nav>
+    <footer>
+        <p>© 2025 ネッ図書館</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,209 @@
+/* ================================
+   全体設定
+================================ */
+body {
+    font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+    margin: 0;
+    background: #f9fafb;
+    color: #333;
+}
+
+/* ================================
+   ヘッダー
+================================ */
+header {
+    text-align: center;
+    padding: 60px 20px 30px;
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    color: white;
+}
+
+header h1 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.1em;
+    color: #f3f4f6;
+}
+
+/* ================================
+   メインエリア
+================================ */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 60px 20px;
+    padding-bottom: 90px; /* 👈 下部ナビの余白 */
+}
+
+/* ================================
+   プロフィールカード
+================================ */
+.profile-container {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 700px;
+    padding: 40px 30px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+}
+
+.profile-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* プロフィール画像 */
+.profile-container img {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 3px solid #4f46e5;
+}
+
+/* 名前 */
+.profile-container h2 {
+    font-size: 1.8em;
+    color: #4f46e5;
+    margin-bottom: 10px;
+}
+
+/* 自己紹介文 */
+.profile-container p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+/* スキルリスト */
+.profile-skills {
+    text-align: left;
+    margin: 20px auto;
+    max-width: 400px;
+}
+
+.profile-skills h3 {
+    color: #4f46e5;
+    margin-bottom: 10px;
+}
+
+.profile-skills ul {
+    list-style: none;
+    padding: 0;
+}
+
+.profile-skills li {
+    background: #f3f4f6;
+    margin-bottom: 8px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+/* SNSリンク */
+.profile-links {
+    margin-top: 30px;
+}
+
+.profile-links a {
+    display: inline-block;
+    margin: 0 8px;
+    padding: 8px 14px;
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: opacity 0.3s, transform 0.2s;
+}
+
+.profile-links a:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+/* ================================
+   フッター
+================================ */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+    font-size: 0.9em;
+    background: #f1f1f1;
+}
+
+/* ================================
+   ボトムナビゲーション
+================================ */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    z-index: 1000;
+    box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.bottom-nav a {
+    text-decoration: none;
+    color: #555;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.bottom-nav a:hover {
+    color: #4f46e5;
+    transform: translateY(-2px);
+}
+
+.bottom-nav a.active {
+    color: #4f46e5;
+    font-weight: bold;
+}
+
+/* ================================
+   スマホ対応
+================================ */
+@media (max-width: 480px) {
+    header {
+        padding: 40px 12px 25px;
+    }
+
+    header h1 {
+        font-size: 1.8em;
+    }
+
+    .profile-container {
+        padding: 30px 20px;
+    }
+
+    .profile-container img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .bottom-nav a {
+        font-size: 0.8rem;
+    }
+
+    main {
+        padding-bottom: 80px;
+    }
+}
