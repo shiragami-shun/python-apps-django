@@ -11,6 +11,9 @@
     <header>
         <h1>👤 プロフィール</h1>
         <p>図書館スタッフ・開発者の紹介ページです</p>
+        <nav>
+            <a href="{% url 'home' %}">🏠 ホームへ戻る</a>
+        </nav>
     </header>
 
     <main>
@@ -41,11 +44,6 @@
                 <p>人々が本を通して新しいアイデアや感動を共有できる、  
                 デジタル図書館を発展させていくことです。</p>
             </div>
-
-            <a href="{% url 'home' %}" class="menu-card">
-                <h2>🏠 ホームへ戻る</h2>
-                <p>図書館のトップページに戻ります</p>
-            </a>
         </div>
     </main>
     <nav class="bottom-nav">

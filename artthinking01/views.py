@@ -31,7 +31,6 @@ def translate(request):
 def ranking(request):
     # お気に入り数が多い順に並べる
     books = Book.objects.order_by('-favorites')
-    
     return render(request, "artthinking01/ranking.html", {"books": books})
 
 
