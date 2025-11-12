@@ -59,4 +59,5 @@ urlpatterns = [
     path("work09/", include("work09.urls")),
     path("library/", include("artthinking01.urls")),
     path("work10/", include("work10.urls")),
+    path("recipes/", include("recipes.urls")),
 ]
