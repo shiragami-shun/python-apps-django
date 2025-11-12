@@ -1,0 +1,122 @@
+body {
+    font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+    background: #f9fafb;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    color: white;
+}
+
+h1 {
+    margin: 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 8px;
+    background: #e5e7eb;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    margin: 5px;
+}
+
+.btn.primary {
+    background: #4f46e5;
+    color: #fff;
+}
+
+.btn.danger {
+    background: #dc2626;
+    color: #fff;
+}
+
+main.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-body h2 {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.card-body .date {
+    font-size: 12px;
+    color: #777;
+}
+
+.detail {
+    padding: 40px;
+    max-width: 700px;
+    margin: auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.detail-img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.recipe-form input,
+.recipe-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.delete-container {
+    text-align: center;
+    padding: 60px;
+}

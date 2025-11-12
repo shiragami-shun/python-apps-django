@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static './static/css/style.css' %}">
+</head>
+<body>
+    <header>
+        <a href="{% url 'recipe_list' %}" class="btn">← 戻る</a>
+    </header>
+
+    <main class="form-container">
+        <h1>{{ title }}</h1>
+        <form method="post" enctype="multipart/form-data" class="recipe-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn primary">保存</button>
+        </form>
+    </main>
+</body>
+</html>

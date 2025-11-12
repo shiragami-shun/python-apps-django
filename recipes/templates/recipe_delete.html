@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>削除確認 | レシピノート</title>
+    <link rel="stylesheet" href="{% static './static/css/style.css' %}">
+</head>
+<body>
+    <main class="delete-container">
+        <h1>本当に「{{ recipe.title }}」を削除しますか？</h1>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn danger">削除する</button>
+            <a href="{% url 'recipe_detail' recipe.pk %}" class="btn">キャンセル</a>
+        </form>
+    </main>
+</body>
+</html>
