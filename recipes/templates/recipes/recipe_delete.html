@@ -7,13 +7,15 @@
     <link rel="stylesheet" href="{% static 'recipes/css/style.css' %}">
 </head>
 <body>
-    <main class="delete-container">
-        <h1>本当に「{{ recipe.title }}」を削除しますか？</h1>
-        <form method="post">
-            {% csrf_token %}
-            <button type="submit" class="btn danger">削除する</button>
-            <a href="{% url 'recipe_detail' recipe.pk %}" class="btn">キャンセル</a>
-        </form>
-    </main>
+    <div class="container">
+        <main class="delete-container">
+            <h1>本当に「{{ recipe.title }}」を削除しますか？</h1>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn danger">削除する</button>
+                <a href="{% url 'recipe_detail' recipe.pk %}" class="btn">キャンセル</a>
+            </form>
+        </main>
+    </div>
 </body>
 </html>

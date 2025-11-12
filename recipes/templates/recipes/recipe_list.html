@@ -12,20 +12,22 @@
         <a href="{% url 'recipe_create' %}" class="btn primary">＋ 新しいレシピ</a>
     </header>
 
-    <main class="grid">
-        {% for recipe in recipes %}
-        <div class="card">
-            {% if recipe.image %}
-                <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}">
-            {% endif %}
-            <div class="card-body">
-                <h2><a href="{% url 'recipe_detail' recipe.pk %}">{{ recipe.title }}</a></h2>
-                <p class="date">{{ recipe.created_at|date:"Y年m月d日" }}</p>
+    <div class="container">
+        <main class="grid">
+            {% for recipe in recipes %}
+            <div class="card">
+                {% if recipe.image %}
+                    <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}">
+                {% endif %}
+                <div class="card-body">
+                    <h2><a href="{% url 'recipe_detail' recipe.pk %}">{{ recipe.title }}</a></h2>
+                    <p class="date">{{ recipe.created_at|date:"Y年m月d日" }}</p>
+                </div>
             </div>
-        </div>
-        {% empty %}
-        <p>まだレシピが登録されていません。</p>
-        {% endfor %}
-    </main>
+            {% empty %}
+            <p>まだレシピが登録されていません。</p>
+            {% endfor %}
+        </main>
+    </div>
 </body>
 </html>

@@ -11,13 +11,15 @@
         <a href="{% url 'recipe_list' %}" class="btn">← 戻る</a>
     </header>
 
-    <main class="form-container">
-        <h1>{{ title }}</h1>
-        <form method="post" enctype="multipart/form-data" class="recipe-form">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn primary">保存</button>
-        </form>
-    </main>
+    <div class="container">
+        <main class="form-container">
+            <h1>{{ title }}</h1>
+            <form method="post" enctype="multipart/form-data" class="recipe-form">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn primary">保存</button>
+            </form>
+        </main>
+    </div>
 </body>
 </html>
