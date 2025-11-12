@@ -30,6 +30,8 @@ from work07.views import hi_low
 from django.shortcuts import render
 from myapp.views import top
 from django.urls import include
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 def toppage(request):
@@ -61,3 +63,8 @@ urlpatterns = [
     path("work10/", include("work10.urls")),
     path("recipes/", include("recipes.urls")),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+        )
