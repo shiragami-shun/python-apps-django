@@ -1,3 +1,6 @@
+/* ================================
+   全体設定
+================================ */
 body {
     font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
     background: #f9fafb;
@@ -6,6 +9,16 @@ body {
     padding: 0;
 }
 
+/* コンテンツ幅設定（headerを除く全体に適用） */
+.container {
+    max-width: 960px;
+    padding: 0 5%;
+    margin: 0 auto;
+}
+
+/* ================================
+   ヘッダー（メインビジュアル：全幅）
+================================ */
 header {
     text-align: center;
     padding: 30px;
@@ -17,6 +30,9 @@ h1 {
     margin: 0;
 }
 
+/* ================================
+   ボタン
+================================ */
 .btn {
     display: inline-block;
     padding: 10px 16px;
@@ -38,6 +54,9 @@ h1 {
     color: #fff;
 }
 
+/* ================================
+   グリッド表示
+================================ */
 main.grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -45,6 +64,9 @@ main.grid {
     padding: 20px;
 }
 
+/* ================================
+   カード
+================================ */
 .card {
     background: #fff;
     border-radius: 12px;
@@ -78,6 +100,9 @@ main.grid {
     color: #777;
 }
 
+/* ================================
+   詳細ページ
+================================ */
 .detail {
     padding: 40px;
     max-width: 700px;
@@ -98,6 +123,9 @@ main.grid {
     margin-top: 20px;
 }
 
+/* ================================
+   フォーム
+================================ */
 .form-container {
     max-width: 600px;
     margin: 40px auto;
@@ -116,7 +144,45 @@ main.grid {
     border-radius: 6px;
 }
 
+/* ================================
+   削除ページ
+================================ */
 .delete-container {
     text-align: center;
     padding: 60px;
+}
+
+/* ================================
+   レスポンシブデザイン（896px以下）
+================================ */
+@media (max-width: 896px) {
+    header {
+        padding: 20px;
+        font-size: 90%;
+    }
+
+    main.grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .card img {
+        height: 160px;
+    }
+
+    .detail {
+        padding: 20px;
+        margin: 20px;
+    }
+
+    .form-container {
+        padding: 20px;
+        margin: 20px;
+    }
+
+    .btn {
+        font-size: 13px;
+        padding: 8px 14px;
+    }
 }
