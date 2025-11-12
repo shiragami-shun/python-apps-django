@@ -101,6 +101,24 @@ main.grid {
 }
 
 /* ================================
+   カードリンク化
+================================ */
+.card a {
+    display: block;          /* カード全体をリンクとして扱う */
+    color: inherit;          /* 文字色はそのまま */
+    text-decoration: none;   /* 下線を消す */
+}
+
+.card a:hover {
+    text-decoration: none;   /* ホバーでも下線を出さない */
+}
+
+.card a .card-body h2,
+.card a .card-body .date {
+    pointer-events: none;    /* タイトルや日付に対してもクリックをカード全体に通す */
+}
+
+/* ================================
    詳細ページ
 ================================ */
 .detail {
