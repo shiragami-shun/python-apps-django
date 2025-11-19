@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 """
 Django settings for python_apps_django project.
 
@@ -13,10 +14,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 
-from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-from dotenv import load_dotenv
 
 load_dotenv()
 
