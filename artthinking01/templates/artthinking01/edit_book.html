@@ -21,35 +21,39 @@
 
     <!-- メインコンテンツ -->
     <main class="translate-container edit-book-container">
-    <h1>📖 本を編集</h1>
+        <h1>📖 本を編集</h1>
 
-    <form method="post" class="translate-controls edit-book-form">
-        {% csrf_token %}
+        <!-- enctype を追加 -->
+        <form method="post" enctype="multipart/form-data" class="translate-controls edit-book-form">
+            {% csrf_token %}
 
-        <label for="title">タイトル</label>
-        <input type="text" id="title" name="title" value="{{ book.title }}" required>
+            <label for="title">タイトル</label>
+            <input type="text" id="title" name="title" value="{{ book.title }}" required>
 
-        <label for="author">著者</label>
-        <input type="text" id="author" name="author" value="{{ book.author }}" required>
+            <label for="author">著者</label>
+            <input type="text" id="author" name="author" value="{{ book.author }}" required>
 
-        <label for="description">説明</label>
-        <textarea id="description" name="description">{{ book.description }}</textarea>
+            <label for="description">説明</label>
+            <textarea id="description" name="description">{{ book.description }}</textarea>
 
-        <label for="category">カテゴリ</label>
-        <input type="text" id="category" name="category" value="{{ book.category }}">
+            <label for="category">カテゴリ</label>
+            <input type="text" id="category" name="category" value="{{ book.category }}">
 
-        <label for="cover_image">カバー画像</label>
-        {% if book.cover_image %}
-        <img src="{{ book.cover_image.url }}" alt="カバー画像" style="max-width:200px; display:block; margin-bottom:10px;">
-        {% endif %}
-        {{ form.cover_image }}
+            <label for="cover_image">カバー画像</label>
 
+            <!-- 現在の画像を表示 -->
+            {% if book.cover_image %}
+            <img src="{{ book.cover_image.url }}" alt="カバー画像" style="max-width:200px; display:block; margin-bottom:10px;">
+            {% endif %}
 
-        <div class="form-buttons">
-            <button type="submit">保存</button>
-        </div>
-    </form>
-</main>
+            <!-- 新しい画像をアップロードできるように -->
+            <input type="file" id="cover_image" name="cover_image">
+
+            <div class="form-buttons">
+                <button type="submit">保存</button>
+            </div>
+        </form>
+    </main>
 
     <nav class="bottom-nav">
         <a href="{% url 'home' %}">🏠 ホーム</a>
