@@ -21,9 +21,16 @@
             {% if books %}
                 {% for book in books %}
                 <div class="book-card">
+                    {% if book.cover_image %}
+                        <img src="{{ book.cover_image.url }}" alt="{{ book.title }} の表紙" class="book-cover">
+                    {% else %}
+                        <img src="{% static 'artthinking01/images/no_image.png' %}" alt="画像なし" class="book-cover">
+                    {% endif %}
+
                     <h2>{{ book.title }}</h2>
                     <p><strong>著者:</strong> {{ book.author }}</p>
                     <p>{{ book.description|truncatechars:150 }}</p>
+
                     <div class="book-actions">
                         <a href="{% url 'edit_book' book.pk %}" class="edit-btn">✏️ 編集</a>
                         <a href="{% url 'delete_book' book.pk %}" class="delete-btn">🗑️ 削除</a>
@@ -36,6 +43,7 @@
             {% endif %}
         </div>
     </main>
+
     <nav class="bottom-nav">
         <a href="{% url 'home' %}">🏠 ホーム</a>
         <a href="{% url 'translate' %}">🌐 翻訳</a>
@@ -44,6 +52,7 @@
         <a href="{% url 'add_book'%}">➕ 本を追加</a>
         <a href="{% url 'book_list' %}">📚 本一覧</a>
     </nav>
+
     <footer>
         <p>© 2025 ネッ図書館</p>
     </footer>
