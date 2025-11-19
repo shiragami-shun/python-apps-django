@@ -134,11 +134,9 @@ def add_timeline(request):
 
 def add_book(request):
     if request.method == "POST":
-        form = BookForm(request.POST)
+        form = BookForm(request.POST, request.FILES)
         if form.is_valid():
             book = form.save(commit=False)
-            # 通常 save() は default DB に保存されるので
-            # .save(using='artthinking01') と指定する
             book.save()
             return redirect('book_list')
     else:
