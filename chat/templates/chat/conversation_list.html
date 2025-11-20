@@ -9,30 +9,32 @@
 </head>
 <body>
 
-
 <div class="conv-list">
-<h1 style="margin-bottom: 20px; font-size: 26px; color: #333;">会話一覧</h1>
+    <h1 style="margin-bottom: 20px; font-size: 26px; color: #333;">会話一覧</h1>
 
+    {% for conv in conversations %}
+    <div class="conv-item">
+        <div class="conv-content">
+            <a href="{% url 'conversation_detail' conversation_id=conv.id %}">
+                {{ conv.title|default:"Conversation " }} {{ conv.id }}
+            </a>
+            <div class="text-muted" style="margin-top: 6px;">
+                {{ conv.created_at|date:"Y/m/d H:i" }}
+            </div>
+        </div>
+        <form method="POST" action="{% url 'conversation_delete' conversation_id=conv.id %}" class="delete-form">
+            {% csrf_token %}
+            <button type="submit" class="delete-button">削除</button>
+        </form>
+    </div>
+    {% empty %}
+    <p class="text-muted">まだ会話がありません。</p>
+    {% endfor %}
 
-{% for conv in conversations %}
-<div class="conv-item">
-<a href="{% url 'conversation_detail' conversation_id=conv.id %}">
-{{ conv.title|default:"Conversation " }} {{ conv.id }}
-</a>
-<div class="text-muted" style="margin-top: 6px;">
-{{ conv.created_at|date:"Y/m/d H:i" }}
+    <div style="margin-top: 20px;">
+        <a class="link" href="{% url 'chat' %}">← トップへ戻る</a>
+    </div>
 </div>
-</div>
-{% empty %}
-<p class="text-muted">まだ会話がありません。</p>
-{% endfor %}
-
-
-<div style="margin-top: 20px;">
-<a class="link" href="{% url 'index' %}">← トップへ戻る</a>
-</div>
-</div>
-
 
 </body>
 </html>
