@@ -9,12 +9,13 @@
 </head>
 <body>
     <header>
+        <h1>レシピ詳細</h1>
         <a href="{% url 'recipe_list' %}" class="btn">← 一覧に戻る</a>
     </header>
 
     <div class="container">
         <main class="detail">
-            <h1>{{ recipe.title }}</h1>
+            <h2>{{ recipe.title }}</h2>
             {% if recipe.image %}
                 <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" class="detail-img">
             {% endif %}

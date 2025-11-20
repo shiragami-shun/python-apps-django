@@ -9,12 +9,13 @@
 </head>
 <body>
     <header>
+        <h1>レシピ編集</h1>
         <a href="{% url 'recipe_list' %}" class="btn">← 戻る</a>
     </header>
 
     <div class="container">
         <main class="form-container">
-            <h1>{{ title }}</h1>
+            <h2>{{ title }}</h2>
             <form method="post" enctype="multipart/form-data" class="recipe-form">
                 {% csrf_token %}
                 {{ form.as_p }}
