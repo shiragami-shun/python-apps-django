@@ -46,3 +46,10 @@ def conversation_list(request):
             "conversations": conversations
             }
         )
+
+
+def conversation_delete(request, conversation_id):
+    if request.method == "POST":
+        conv = get_object_or_404(Conversation, id=conversation_id)
+        conv.delete()
+    return redirect("conversation_list")  # 会話一覧ページに戻る
