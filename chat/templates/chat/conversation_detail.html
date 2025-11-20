@@ -11,6 +11,11 @@
 <div class="chat-container">
     <div class="header">AI Chat</div>
 
+    <!-- 戻るボタン -->
+    <div class="back-button-container">
+        <a href="{% url 'chat' %}" class="back-button">← トップに戻る</a>
+    </div>
+
     <div class="messages" id="messages-area">
         {% for msg in messages %}
             <div class="message {{ msg.role }}">

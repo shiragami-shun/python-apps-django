@@ -1,6 +1,5 @@
 /* =============================
    ai_chat - style.css
-   外部CSSファイル。conversation_detail.html などで読み込んでください。
    ============================= */
 
 /* Reset & Base */
@@ -38,6 +37,25 @@ body {
   font-size: 22px;
   font-weight: bold;
   text-align: center;
+}
+
+/* Back Button */
+.back-button-container {
+  padding: 12px 25px;
+  background: #f5f7fa;
+}
+.back-button {
+  display: inline-block;
+  padding: 8px 14px;
+  background: #4a90e2;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.2s;
+}
+.back-button:hover {
+  background: #357ab7;
 }
 
 /* Messages Area */
