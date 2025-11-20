@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>{{ title }}</title>
     <link rel="stylesheet" href="{% static 'recipes/css/style.css' %}">
-    <img rel="faivicon" href="{% static 'recipes/images/favicon.webp' %}">
+    <link rel="icon" type="image/webp" href="{% static 'recipes/images/favicon.webp' %}">
 </head>
 <body>
     <header>
@@ -17,7 +17,35 @@
             <h1>{{ title }}</h1>
             <form method="post" enctype="multipart/form-data" class="recipe-form">
                 {% csrf_token %}
-                {{ form.as_p }}
+
+                <p>
+                    {{ form.title.label_tag }}<br>
+                    {{ form.title }}
+                </p>
+
+                <p>
+                    {{ form.ingredients.label_tag }}<br>
+                    {{ form.ingredients }}
+                </p>
+
+                <p>
+                    {{ form.instructions.label_tag }}<br>
+                    {{ form.instructions }}
+                </p>
+
+                <p>
+                    {{ form.image.label_tag }}<br>
+                    {{ form.image }}
+                </p>
+
+                {% if form.instance.image %}
+                    <div class="current-image-block">
+                        <p>現在の画像:</p>
+                        <img src="{{ form.instance.image.url }}" width="200"><br>
+                        {{ form.clear_image }} {{ form.clear_image.label_tag }}
+                    </div>
+                {% endif %}
+
                 <button type="submit" class="btn primary">保存</button>
             </form>
         </main>
