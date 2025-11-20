@@ -1,0 +1,11 @@
+<h1>会話一覧</h1>
+
+<ul>
+    {% for conv in conversations %}
+        <li>
+            <a href="{% url 'conversation_detail' conversation_id=conv.id %}">
+                {{ conv.title }} - {{ conv.created_at }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

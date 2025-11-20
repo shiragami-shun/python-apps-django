@@ -1,0 +1,13 @@
+<h2>{{ conversation }}</h2>
+
+<div>
+    {% for msg in messages %}
+        <p><strong>{{ msg.role }}:</strong> {{ msg.content }}</p>
+    {% endfor %}
+</div>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="text" name="message" placeholder="メッセージを入力..." style="width:80%;">
+    <button type="submit">送信</button>
+</form>
