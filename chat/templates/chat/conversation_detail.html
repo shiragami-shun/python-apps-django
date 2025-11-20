@@ -1,13 +1,36 @@
-<h2>{{ conversation }}</h2>
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat - 会話</title>
+    <link rel="stylesheet" href="{% static 'chat/style.css' %}">
+</head>
+<body>
+<div class="chat-container">
+    <div class="header">AI Chat</div>
 
-<div>
-    {% for msg in messages %}
-        <p><strong>{{ msg.role }}:</strong> {{ msg.content }}</p>
-    {% endfor %}
+    <div class="messages" id="messages-area">
+        {% for msg in messages %}
+            <div class="message {{ msg.role }}">
+                <div class="bubble">{{ msg.content }}</div>
+                <span class="text-muted">{{ msg.created_at|date:"H:i" }}</span>
+            </div>
+        {% endfor %}
+    </div>
+
+    <form method="POST" class="input-area">
+        {% csrf_token %}
+        <input type="text" name="message" placeholder="メッセージを入力..." autocomplete="off">
+        <button type="submit">送信</button>
+    </form>
 </div>
 
-<form method="POST">
-    {% csrf_token %}
-    <input type="text" name="message" placeholder="メッセージを入力..." style="width:80%;">
-    <button type="submit">送信</button>
-</form>
+<script>
+// メッセージエリアを自動スクロール
+const area = document.getElementById("messages-area");
+area.scrollTop = area.scrollHeight;
+</script>
+</body>
+</html>

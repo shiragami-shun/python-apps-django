@@ -1,11 +1,38 @@
-<h1>会話一覧</h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Chat - 会話一覧</title>
+<link rel="stylesheet" href="{% static 'chat/style.css' %}">
+</head>
+<body>
 
-<ul>
-    {% for conv in conversations %}
-        <li>
-            <a href="{% url 'conversation_detail' conversation_id=conv.id %}">
-                {{ conv.title }} - {{ conv.created_at }}
-            </a>
-        </li>
-    {% endfor %}
-</ul>
+
+<div class="conv-list">
+<h1 style="margin-bottom: 20px; font-size: 26px; color: #333;">会話一覧</h1>
+
+
+{% for conv in conversations %}
+<div class="conv-item">
+<a href="{% url 'conversation_detail' conversation_id=conv.id %}">
+{{ conv.title|default:"Conversation " }} {{ conv.id }}
+</a>
+<div class="text-muted" style="margin-top: 6px;">
+{{ conv.created_at|date:"Y/m/d H:i" }}
+</div>
+</div>
+{% empty %}
+<p class="text-muted">まだ会話がありません。</p>
+{% endfor %}
+
+
+<div style="margin-top: 20px;">
+<a class="link" href="{% url 'index' %}">← トップへ戻る</a>
+</div>
+</div>
+
+
+</body>
+</html>

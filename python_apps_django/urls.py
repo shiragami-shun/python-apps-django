@@ -62,6 +62,7 @@ urlpatterns = [
     path("library/", include("artthinking01.urls")),
     path("work10/", include("work10.urls")),
     path("recipes/", include("recipes.urls")),
+    path("chat/", include("chat.urls"))
 ]
 
 if settings.DEBUG:

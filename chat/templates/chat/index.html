@@ -1,4 +1,28 @@
-<h1>AI Chat</h1>
-<a href="{% url 'start_conversation' %}">新しい会話を始める</a>
-<br>
-<a href="{% url 'conversation_list' %}">過去の会話を見る</a>
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Chat - ホーム</title>
+<link rel="stylesheet" href="{% static 'chat/style.css' %}">
+</head>
+<body>
+
+
+<div class="conv-list" style="text-align: center;">
+<h1 style="font-size: 32px; margin-bottom: 10px;">AI Chat</h1>
+<p style="margin-bottom: 30px; color: #555;">AI とチャットし、会話を保存していつでも振り返ることができます。</p>
+
+
+<a href="{% url 'start_conversation' %}" style="display:inline-block; padding: 14px 26px; background:#4a90e2; border-radius:12px; color:#fff; text-decoration:none; font-size:18px; font-weight:bold;">新しい会話を始める</a>
+
+
+<div style="margin-top: 20px;">
+<a class="link" href="{% url 'conversation_list' %}">過去の会話を見る →</a>
+</div>
+</div>
+
+
+</body>
+</html>
