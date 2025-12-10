@@ -1,41 +1,44 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Chat - 会話</title>
     <link rel="stylesheet" href="{% static 'chat/style.css' %}">
 </head>
+
 <body>
-<div class="chat-container">
-    <div class="header">AI Chat</div>
+    <div class="chat-container">
+        <div class="header">AI Chat</div>
 
-    <!-- 戻るボタン -->
-    <div class="back-button-container">
-        <a href="{% url 'chat' %}" class="back-button">← トップに戻る</a>
-    </div>
+        <!-- 戻るボタン -->
+        <div class="back-button-container">
+            <a href="{% url 'chat' %}" class="back-button">← トップに戻る</a>
+        </div>
 
-    <div class="messages" id="messages-area">
-        {% for msg in messages %}
+        <div class="messages" id="messages-area">
+            {% for msg in messages %}
             <div class="message {{ msg.role }}">
                 <div class="bubble">{{ msg.content }}</div>
                 <span class="text-muted">{{ msg.created_at|date:"H:i" }}</span>
             </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
+
+        <form method="POST" class="input-area">
+            {% csrf_token %}
+            <input type="text" name="message" placeholder="メッセージを入力..." autocomplete="off">
+            <button type="submit">送信</button>
+        </form>
     </div>
 
-    <form method="POST" class="input-area">
-        {% csrf_token %}
-        <input type="text" name="message" placeholder="メッセージを入力..." autocomplete="off">
-        <button type="submit">送信</button>
-    </form>
-</div>
-
-<script>
-// メッセージエリアを自動スクロール
-const area = document.getElementById("messages-area");
-area.scrollTop = area.scrollHeight;
-</script>
+    <script>
+        // メッセージエリアを自動スクロール
+        const area = document.getElementById("messages-area");
+        area.scrollTop = area.scrollHeight;
+    </script>
 </body>
+
 </html>

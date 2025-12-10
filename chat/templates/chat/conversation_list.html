@@ -1,40 +1,43 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Chat - 会話一覧</title>
-<link rel="stylesheet" href="{% static 'chat/style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat - 会話一覧</title>
+    <link rel="stylesheet" href="{% static 'chat/style.css' %}">
 </head>
+
 <body>
 
-<div class="conv-list">
-    <h1 style="margin-bottom: 20px; font-size: 26px; color: #333;">会話一覧</h1>
+    <div class="conv-list">
+        <h1 style="margin-bottom: 20px; font-size: 26px; color: #333;">会話一覧</h1>
 
-    {% for conv in conversations %}
-    <div class="conv-item">
-        <div class="conv-content">
-            <a href="{% url 'conversation_detail' conversation_id=conv.id %}">
-                {{ conv.title|default:"Conversation " }} {{ conv.id }}
-            </a>
-            <div class="text-muted" style="margin-top: 6px;">
-                {{ conv.created_at|date:"Y/m/d H:i" }}
+        {% for conv in conversations %}
+        <div class="conv-item">
+            <div class="conv-content">
+                <a href="{% url 'conversation_detail' conversation_id=conv.id %}">
+                    {{ conv.title|default:"Conversation " }} {{ conv.id }}
+                </a>
+                <div class="text-muted" style="margin-top: 6px;">
+                    {{ conv.created_at|date:"Y/m/d H:i" }}
+                </div>
             </div>
+            <form method="POST" action="{% url 'conversation_delete' conversation_id=conv.id %}" class="delete-form">
+                {% csrf_token %}
+                <button type="submit" class="delete-button">削除</button>
+            </form>
         </div>
-        <form method="POST" action="{% url 'conversation_delete' conversation_id=conv.id %}" class="delete-form">
-            {% csrf_token %}
-            <button type="submit" class="delete-button">削除</button>
-        </form>
-    </div>
-    {% empty %}
-    <p class="text-muted">まだ会話がありません。</p>
-    {% endfor %}
+        {% empty %}
+        <p class="text-muted">まだ会話がありません。</p>
+        {% endfor %}
 
-    <div style="margin-top: 20px;">
-        <a class="link" href="{% url 'chat' %}">← トップへ戻る</a>
+        <div style="margin-top: 20px;">
+            <a class="link" href="{% url 'chat' %}">← トップへ戻る</a>
+        </div>
     </div>
-</div>
 
 </body>
+
 </html>
