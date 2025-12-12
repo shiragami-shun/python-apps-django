@@ -15,7 +15,7 @@ urlpatterns = [
     path('books/delete/<int:pk>/', views.delete_book, name='delete_book'),
     path('profile/', views.profile, name='profile'),
     path('books/favorite/<int:pk>/', views.favorite_book, name='favorite_book'),
-    path("login/", views.login_view, name="login"),
-    path("logout/", views.logout_view, name="logout"),
-    path("register/", views.register_view, name="register"),
+    path("login/", views.login_view, name="art_login"),
+    path("logout/", views.logout_view, name="art_logout"),
+    path("register/", views.register_view, name="art_register"),
 ]
