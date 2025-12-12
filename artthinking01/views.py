@@ -9,6 +9,9 @@ from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
 from .models import Post
 from django.db import connections
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
 
 
 def home(request):
@@ -178,3 +181,72 @@ def favorite_book(request, pk):
     except Book.DoesNotExist:
         pass  # 本が存在しない場合は無視
     return redirect('book_list')
+
+
+def login_view(request):
+    # POST のときログイン処理
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)  # ← ログイン成功
+            return redirect("home")  # ← 好きなページにリダイレクト
+        else:
+            return render(
+                request,
+                "artthinking01/login.html",
+                {"error": "ユーザー名またはパスワードが違います。"}
+            )
+
+    # GET のときはログインページを表示
+    return render(request, "artthinking01/login.html")
+
+
+def logout_view(request):
+    logout(request)
+    return redirect("login")  # ログアウト後にログイン画面へ
+
+
+def register_view(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        password2 = request.POST.get("password2")
+
+        # 入力チェック
+        if not username or not password:
+            return render(
+                request, "artthinking01/register.html", {
+                    "error": "すべての項目を入力してください"
+                    }
+            )
+
+        if password != password2:
+            return render(request, "artthinking01/register.html", {
+                "error": "パスワードが一致しません"
+                }
+            )
+
+        # すでに存在するユーザー名
+        if User.objects.filter(username=username).exists():
+            return render(request, "artthinking01/register.html", {
+                "error": "このユーザー名は既に使用されています"
+                }
+            )
+
+        # ユーザー作成
+        user = User(
+            username=username,
+            password=make_password(password)
+        )
+        user.save()
+
+        # ログイン状態にする
+        login(request, user)
+
+        return redirect("home")
+
+    return render(request, "artthinking01/register.html")

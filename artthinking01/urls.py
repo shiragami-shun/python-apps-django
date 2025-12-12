@@ -14,5 +14,8 @@ urlpatterns = [
     path('books/edit/<int:pk>/', views.edit_book, name='edit_book'),
     path('books/delete/<int:pk>/', views.delete_book, name='delete_book'),
     path('profile/', views.profile, name='profile'),
-    path('books/favorite/<int:pk>/', views.favorite_book, name='favorite_book')
+    path('books/favorite/<int:pk>/', views.favorite_book, name='favorite_book'),
+    path("login/", views.login_view, name="login"),
+    path("logout/", views.logout_view, name="logout"),
+    path("register/", views.register_view, name="register"),
 ]

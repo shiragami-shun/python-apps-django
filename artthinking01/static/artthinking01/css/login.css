@@ -1,0 +1,75 @@
+/* 全体 */
+body {
+    font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+    margin: 0;
+    background: #f9fafb;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* ログインカード */
+.login-container {
+    background: white;
+    width: 350px;
+    padding: 40px 30px;
+    border-radius: 18px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    text-align: center;
+}
+
+/* タイトル */
+.login-container h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* 入力欄 */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus {
+    border: 1px solid #4f46e5;
+    box-shadow: 0 0 6px rgba(79, 70, 229, 0.3);
+    outline: none;
+}
+
+/* ログインボタン */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    border: none;
+    color: white;
+    font-size: 1.1em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(79, 70, 229, 0.3);
+}
+
+/* エラーメッセージ */
+.error-message {
+    color: #e11d48;
+    font-size: 0.95em;
+    margin-bottom: 10px;
+}

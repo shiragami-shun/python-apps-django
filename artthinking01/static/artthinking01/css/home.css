@@ -12,6 +12,51 @@ header {
     color: white;
 }
 
+/* ヘッダー右上ボタン */
+.header-right {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    display: flex;
+    gap: 12px;
+}
+
+.header-btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.header-btn.login {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.header-btn.login:hover {
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.header-btn.register {
+    background: white;
+    color: #4f46e5;
+}
+
+.header-btn.register:hover {
+    background: #f1f1ff;
+}
+
+.header-btn.logout {
+    background: white;
+    color: #dc2626;
+}
+
+.header-btn.logout:hover {
+    background: #ffe5e5;
+}
+
 h1 {
     font-size: 2.5em;
     margin-bottom: 10px;

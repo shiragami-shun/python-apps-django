@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>新規登録</title>
+    <link rel="stylesheet" href="{% static 'artthinking01/login.css' %}">
+</head>
+<body>
+
+<div class="login-container">
+    <h2>新規登録</h2>
+
+    {% if error %}
+        <p class="error-message">{{ error }}</p>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="ユーザー名" required>
+        <input type="password" name="password" placeholder="パスワード" required>
+        <input type="password" name="password2" placeholder="確認用パスワード" required>
+        <button type="submit">アカウント作成</button>
+    </form>
+
+    <p style="margin-top: 15px;">
+        すでにアカウントがありますか？
+        <a href="{% url 'login' %}">ログイン</a>
+    </p>
+</div>
+
+</body>
+</html>
