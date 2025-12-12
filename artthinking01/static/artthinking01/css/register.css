@@ -1,3 +1,6 @@
+/* register.css */
+
+/* 全体 */
 body {
     font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
     margin: 0;
@@ -5,84 +8,71 @@ body {
     color: #333;
 }
 
-/* ヘッダー部分（タイトル） */
-header {
-    text-align: center;
-    padding: 60px 20px 30px;
-    background: linear-gradient(135deg, #4f46e5, #9333ea);
-    color: white;
-}
-
-h1 {
-    font-size: 2.3em;
-    margin-bottom: 10px;
-}
-
-p {
-    font-size: 1.05em;
-}
-
-/* 登録フォーム全体 */
-.register-container {
-    width: 90%;
-    max-width: 420px;
-    margin: 40px auto;
+/* コンテナ */
+.login-container {
+    max-width: 400px;
+    margin: 60px auto;
     background: white;
-    border-radius: 18px;
-    padding: 40px 30px;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+}
+
+/* タイトル */
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* エラーメッセージ */
+.error-message {
+    color: #d32f2f;
+    background: #fdecea;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 /* 入力欄 */
-input[type="text"],
-input[type="email"],
-input[type="password"] {
+input {
     width: 100%;
-    padding: 12px;
-    margin-top: 8px;
-    margin-bottom: 20px;
-    border: 1px solid #ddd;
+    padding: 10px;
+    border: 1px solid #ccc;
     border-radius: 8px;
+    margin-top: 16px;
     font-size: 1em;
-    background: #f9fafb;
-    transition: border 0.2s ease;
 }
 
-input:focus {
-    border-color: #4f46e5;
-    outline: none;
-}
-
-/* 送信ボタン */
+/* ボタン */
 button {
     width: 100%;
-    padding: 14px;
-    background: #4f46e5;
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
     color: white;
-    font-size: 1.1em;
     border: none;
-    border-radius: 10px;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1.1em;
+    margin-top: 30px;
     cursor: pointer;
-    transition: background 0.2s ease, transform 0.2s ease;
+    transition: opacity 0.3s;
 }
 
 button:hover {
-    background: #4338ca;
-    transform: translateY(-2px);
+    opacity: 0.9;
 }
 
-/* ログインリンク */
-.register-footer {
+/* ログインへのリンク */
+p {
     text-align: center;
-    margin-top: 20px;
     font-size: 0.95em;
 }
 
-.register-footer a {
+p a {
     color: #4f46e5;
     text-decoration: none;
 }
 
-.register-footer a:hover {
+p a:hover {
     text-decoration: underline;
 }

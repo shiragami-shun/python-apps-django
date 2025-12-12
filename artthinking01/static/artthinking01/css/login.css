@@ -4,97 +4,75 @@ body {
     margin: 0;
     background: #f9fafb;
     color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
 }
 
-/* ログインカード */
+/* ログインコンテナ */
 .login-container {
+    max-width: 400px;
+    margin: 60px auto;
     background: white;
-    width: 350px;
-    padding: 40px 30px;
-    border-radius: 18px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 40px;
     text-align: center;
 }
 
 /* タイトル */
 .login-container h2 {
-    font-size: 2em;
+    margin-top: 0;
     margin-bottom: 20px;
-    background: linear-gradient(135deg, #4f46e5, #9333ea);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-/* 入力欄 */
-input {
-    width: 100%;
-    padding: 12px;
-    margin: 12px 0;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    font-size: 1em;
-    box-sizing: border-box;
-    transition: border 0.2s ease, box-shadow 0.2s ease;
-}
-
-input:focus {
-    border: 1px solid #4f46e5;
-    box-shadow: 0 0 6px rgba(79, 70, 229, 0.3);
-    outline: none;
-}
-
-/* ログインボタン */
-button {
-    width: 100%;
-    padding: 12px;
-    margin-top: 15px;
-    background: linear-gradient(135deg, #4f46e5, #9333ea);
-    border: none;
-    color: white;
-    font-size: 1.1em;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.15s ease, box-shadow 0.2s ease;
-}
-
-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(79, 70, 229, 0.3);
 }
 
 /* エラーメッセージ */
 .error-message {
-    color: #e11d48;
-    font-size: 0.95em;
-    margin-bottom: 10px;
+    color: #d32f2f;
+    background: #fdecea;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* 入力フォーム */
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-top: 16px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+/* ボタン */
+button {
+    width: 100%;
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1.1em;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+button:hover {
+    opacity: 0.9;
 }
 
 /* 新規登録リンク */
 .register-link {
     margin-top: 20px;
-    text-align: center;
 }
 
 .register-link a {
-    display: inline-block;
-    padding: 10px 0;
-    width: 100%;
     color: #4f46e5;
-    background: #eef2ff;
-    border-radius: 10px;
     text-decoration: none;
     font-size: 0.95em;
-    font-weight: bold;
-    transition: all 0.2s ease;
 }
 
 .register-link a:hover {
-    background: #e0e7ff;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(79, 70, 229, 0.25);
+    text-decoration: underline;
 }
