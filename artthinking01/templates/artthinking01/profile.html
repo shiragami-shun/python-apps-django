@@ -11,8 +11,10 @@
     <header>
         <h1>👤 プロフィール</h1>
         <p>図書館スタッフ・開発者の紹介ページです</p>
+
         <nav>
             <a href="{% url 'home' %}">🏠 ホームへ戻る</a>
+            <a href="{% url 'profile_edit' %}" class="edit-btn">✏️ プロフィール編集</a>
         </nav>
     </header>
 
@@ -46,6 +48,7 @@
             </div>
         </div>
     </main>
+
     <nav class="bottom-nav">
         <a href="{% url 'home' %}">🏠 ホーム</a>
         <a href="{% url 'translate' %}">🌐 翻訳</a>
@@ -55,6 +58,7 @@
         <a href="{% url 'book_list' %}">📚 本一覧</a>
         <a href="{% url 'profile' %}">👤 プロフィール</a>
     </nav>
+
     <footer>
         <p>© 2025 ネッ図書館</p>
     </footer>

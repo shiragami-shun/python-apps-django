@@ -103,3 +103,72 @@ button:hover {
 .register-link a:hover {
     text-decoration: underline;
 }
+
+/* =============================
+   レスポンシブデザイン
+   ============================= */
+
+/* 768px以下（タブレット） */
+@media (max-width: 768px) {
+
+    header {
+        padding: 40px 16px 24px;
+    }
+
+    .login-container {
+        width: 85%;
+        padding: 32px 24px;
+        margin: 40px auto;
+    }
+
+    .login-container h2 {
+        font-size: 1.4em;
+    }
+
+    input {
+        padding: 10px;
+        font-size: 0.95em;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 1em;
+    }
+}
+
+/* 480px以下（スマホ） */
+@media (max-width: 480px) {
+
+    header {
+        padding: 30px 12px 20px;
+    }
+
+    header nav a {
+        padding: 6px 12px;
+        font-size: 0.9em;
+    }
+
+    .login-container {
+        width: 92%;
+        padding: 28px 18px;
+        margin: 30px auto;
+    }
+
+    .login-container h2 {
+        font-size: 1.3em;
+    }
+
+    input {
+        font-size: 0.9em;
+        padding: 10px;
+    }
+
+    button {
+        font-size: 0.95em;
+        padding: 10px;
+    }
+
+    .register-link a {
+        font-size: 0.9em;
+    }
+}
