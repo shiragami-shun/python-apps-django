@@ -74,3 +74,27 @@ button:hover {
     margin-bottom: 10px;
 }
 
+/* 新規登録リンク */
+.register-link {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.register-link a {
+    display: inline-block;
+    padding: 10px 0;
+    width: 100%;
+    color: #4f46e5;
+    background: #eef2ff;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 0.95em;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.register-link a:hover {
+    background: #e0e7ff;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(79, 70, 229, 0.25);
+}
