@@ -56,7 +56,9 @@ INSTALLED_APPS = [
     "artthinking01",
     "work10",
     "recipes",
-    "chat"
+    "chat",
+    "quiz",
+    "AI_Todo"
 ]
 
 MIDDLEWARE = [

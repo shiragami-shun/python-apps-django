@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
-from googletrans import Translator
+from deep_translator import GoogleTranslator
 from .models import Book
 from .forms import BookForm
 from django.shortcuts import redirect
@@ -97,22 +97,26 @@ def translate_api(request):
         if not target:
             return JsonResponse({"error": "ターゲット言語がありません"}, status=400)
 
-        # googletrans が扱う言語コードと入力コードのマッピング
-        # (zh-Hans/zh-Hant -> zh-cn/zh-tw 等の変換は内部で調整)
+        # 言語コード調整
         mapper = {
-            "zh-Hans": "zh-cn",
-            "zh-Hant": "zh-tw",
-            # 必要なら他のマッピングを追加
+            "zh-Hans": "zh-CN",
+            "zh-Hant": "zh-TW",
         }
-        dest = mapper.get(target, target)
+        target_lang = mapper.get(target, target)
 
-        translator = Translator()
-        translated = translator.translate(text, dest=dest)
+        translated_text = GoogleTranslator(
+            source="auto",
+            target=target_lang
+        ).translate(text)
 
-        return JsonResponse({"translated_text": translated.text})
+        return JsonResponse({"translated_text": translated_text})
+
     except Exception as e:
-        # エラー情報は開発中のみ詳細出力して良い（本番では控えめに）
-        return JsonResponse({"error": f"翻訳エラー: {str(e)}"}, status=500)
+        return JsonResponse(
+            {"error": f"翻訳エラー: {str(e)}"},
+            status=500
+        )
+
 
 
 def add_timeline(request):
