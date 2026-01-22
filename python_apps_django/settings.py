@@ -32,11 +32,18 @@ SECRET_KEY = "django-insecure-1mk-ff^7we-@3n)dr%ho)v1&bzx=r&0kb6!+%u(og%yysk^p25
 DEBUG = True
 
 ALLOWED_HOSTS = (
-    os.environ.get("ALLOWED_HOSTS") or ""
-    ).split(",")  # deploy for Railway
-CSRF_TRUSTED_ORIGINS = (
-    os.environ.get("CSRF_TRUSTED_ORIGINS") or ""
+    os.environ.get(
+        "ALLOWED_HOSTS",
+        "localhost,127.0.0.1,0.0.0.0"
     ).split(",")
+)
+
+CSRF_TRUSTED_ORIGINS = (
+    os.environ.get(
+        "CSRF_TRUSTED_ORIGINS",
+        "http://localhost:8000,http://127.0.0.1:8000"
+    ).split(",")
+)
 
 # Application definition
 
@@ -208,12 +215,3 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # setup basicauth middleware
-if os.environ.get("ENABLE_BASIC_AUTH") or "false" == "true":
-    MIDDLEWARE.append("basicauth.middleware.BasicAuthMiddleware")
-    BASICAUTH_USERS = {
-        os.environ.get(
-            "BASIC_AUTH_USERNAME"
-            ): os.environ.get(
-                "BASIC_AUTH_PASSWORD"
-                ),
-    }

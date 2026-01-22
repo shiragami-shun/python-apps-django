@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>AI ToDo</h1>
+
+<ul>
+  {% for todo in todos %}
+    <li>
+      {{ todo.title }}（{{ todo.estimated_minutes }}分）
+      {% if todo.done %}✔{% endif %}
+    </li>
+  {% empty %}
+    <li>まだタスクがありません</li>
+  {% endfor %}
+</ul>
+</body>
+</html>
