@@ -11,7 +11,7 @@ build:
 run:
   env:
     - name: DB_NAME
-      value: "python_2025_2501074" # 自分のDBに変更する
+      value: "python00" # 自分のDBに変更する
     - name: ALLOWED_HOSTS
       value: .ap-northeast-1.awsapprunner.com
     - name: CSRF_TRUSTED_ORIGINS
@@ -31,6 +31,8 @@ run:
       value-from: "arn:aws:secretsmanager:ap-northeast-1:897722665268:secret:prod/python-2025/mysql-ZpTVYM:username::"
     - name: DB_PASSWORD
       value-from: "arn:aws:secretsmanager:ap-northeast-1:897722665268:secret:prod/python-2025/mysql-ZpTVYM:password::"
+    - name: OPENAI_API_KEY
+      value-from: "arn:aws:secretsmanager:ap-northeast-1:897722665268:secret:prod/python-2025/openai-4QYLIA:apikey::"
   pre-run:
     - dnf install -y mariadb105-devel
   command: sh entrypoint.sh
