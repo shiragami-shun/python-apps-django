@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo作成</title>
+</head>
+
+<body>
+  <h1>Todo登録</h1>
+
+  <form method="post">
+    {% csrf_token %}
+
+    <h3>Todo内容</h3>
+    {{ todo_form.as_p }}
+
+    <h3>新しいカテゴリを追加</h3>
+    {{ category_form.as_p }}
+
+    <button type="submit">登録</button>
+  </form>
+
+  <a href="{% url 'AI_Todo' %}">一覧へ戻る</a>
+</body>
+
+</html>
