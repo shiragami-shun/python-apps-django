@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from .models import Todo
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from .forms import TodoForm, CategoryForm
 from .models import Category
+from openai import OpenAI
+import os
 
 
 def todo_list(request):
@@ -41,3 +43,30 @@ def category_create(request):
             return redirect("AI_Todo")
 
     return render(request, "AI_Todo/category_form.html")
+
+
+def todo_edit(request, pk):
+    todo = get_object_or_404(Todo, pk=pk)
+
+    if request.method == "POST":
+        form = TodoForm(request.POST, instance=todo)
+        if form.is_valid():
+            form.save()
+            return redirect("AI_Todo")
+    else:
+        form = TodoForm(instance=todo)
+
+    return render(request, "AI_Todo/todo_edit.html", {
+        "form": form
+    })
+
+
+def todo_delete(request, pk):
+    todo = get_object_or_404(Todo, id=pk)
+    todo.delete()
+    return redirect("AI_Todo")
+
+
+client = OpenAI(
+    api_key=os.getenv("OPENAI_API_KEY")
+)
