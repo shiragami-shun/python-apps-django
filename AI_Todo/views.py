@@ -17,14 +17,6 @@ def todo_create(request):
         todo_form = TodoForm(request.POST)
         category_form = CategoryForm(request.POST)
 
-        # 新規カテゴリが入力されていたら作る
-        if category_form.is_valid() and category_form.cleaned_data.get("name"):
-            category = category_form.save()
-            todo = todo_form.save(commit=False)
-            todo.category = category
-            todo.save()
-            return redirect("AI_Todo")
-
         # 既存カテゴリでTodo作成
         if todo_form.is_valid():
             todo_form.save()
