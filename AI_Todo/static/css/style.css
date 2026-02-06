@@ -1,0 +1,103 @@
+/* ===== 全体リセット ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #eef2f3, #d9e7ff);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ===== コンテナ ===== */
+.container {
+    background: #ffffff;
+    width: 90%;
+    max-width: 600px;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* ===== タイトル ===== */
+h1 {
+    text-align: center;
+    margin-bottom: 24px;
+    color: #333;
+}
+
+/* ===== フォーム ===== */
+form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 2px rgba(79,70,229,0.2);
+}
+
+/* ===== ボタン ===== */
+button {
+    background: #4f46e5;
+    color: #fff;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    transition: background 0.2s ease;
+}
+
+button:hover {
+    background: #4338ca;
+}
+
+/* ===== Todoリスト ===== */
+.todo-list {
+    margin-top: 10px;
+}
+
+.todo-item {
+    background: #f3f4f6;
+    padding: 12px 14px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.todo-item span {
+    color: #333;
+}
+
+/* ===== 完了状態 ===== */
+.todo-item.completed {
+    background: #d1fae5;
+    text-decoration: line-through;
+    color: #065f46;
+}
+
+/* ===== フッター ===== */
+.footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+}

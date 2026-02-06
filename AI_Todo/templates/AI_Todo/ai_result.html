@@ -1,7 +1,21 @@
-<h1>AIの提案</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-<pre>{{ result }}</pre>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <title>Document</title>
+</head>
 
-<br>
-<a href="{% url 'ai_suggest' %}">もう一度聞く</a> |
-<a href="{% url 'AI_Todo' %}">Todo一覧へ</a>
+<body>
+  <h1>AIの提案</h1>
+
+  <pre>{{ result }}</pre>
+
+  <br>
+  <a href="{% url 'ai_suggest' %}">もう一度聞く</a> |
+  <a href="{% url 'AI_Todo' %}">Todo一覧へ</a>
+</body>
+
+</html>

@@ -1,12 +1,28 @@
-<h1>AIにTodoを提案してもらう</h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
 
-<form method="post">
-  {% csrf_token %}
-  <input type="text" name="request" style="width:300px"
-         placeholder="例：仕事と勉強を両立したい">
-  <br><br>
-  <button type="submit">AIに聞く</button>
-</form>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <title>Document</title>
+</head>
 
-<br>
-<a href="{% url 'AI_Todo' %}">戻る</a>
+<body>
+
+  <h1>AIにTodoを提案してもらう</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    <input type="text" name="request" style="width:300px" placeholder="例：仕事と勉強を両立したい">
+    <br><br>
+    <button type="submit">AIに聞く</button>
+  </form>
+
+  <br>
+  <a href="{% url 'AI_Todo' %}">戻る</a>
+
+</body>
+
+</html>
