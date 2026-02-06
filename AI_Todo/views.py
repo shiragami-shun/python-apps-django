@@ -3,8 +3,10 @@ from .models import Todo
 from django.shortcuts import redirect, get_object_or_404
 from .forms import TodoForm, CategoryForm
 from .models import Category
-from openai import OpenAI
-import os
+import openai
+from django.conf import settings
+
+openai.api_key = settings.OPENAI_API_KEY
 
 
 def todo_list(request):
@@ -67,30 +69,20 @@ def todo_delete(request, pk):
     return redirect("AI_Todo")
 
 
-client = OpenAI(
-    api_key=os.getenv("OPENAI_API_KEY")
-)
-
-
 def ai_suggest(request):
     if request.method == "POST":
         user_input = request.POST.get("request")
 
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
             messages=[
-                {
-                    "role": "system",
-                    "content": "You suggest short actionable todo items."
-                },
-                {
-                    "role": "user",
-                    "content": f"{user_input} からTodoを5個日本語で箇条書きで作って"
-                }
-            ]
+                {"role": "system", "content": "You suggest short actionable todo items."},
+                {"role": "user", "content": f"{user_input} からTodoを5個日本語で箇条書きで作って"}
+            ],
+            temperature=0.7
         )
 
-        result = response.choices[0].message.content
+        result = response["choices"][0]["message"]["content"]
 
         return render(
             request,
