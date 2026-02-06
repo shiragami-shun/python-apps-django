@@ -6,5 +6,6 @@ urlpatterns = [
     path("create/", views.todo_create, name="todo_create"),
     path("category_create/", views.category_create, name="category_create"),
     path("edit/<int:pk>/", views.todo_edit, name="todo_edit"),
-    path("delete/<int:pk>/", views.todo_delete, name="todo_delete")
+    path("delete/<int:pk>/", views.todo_delete, name="todo_delete"),
+    path("ai/", views.ai_suggest, name="ai_suggest"),
 ]

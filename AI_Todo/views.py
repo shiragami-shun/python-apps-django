@@ -70,3 +70,32 @@ def todo_delete(request, pk):
 client = OpenAI(
     api_key=os.getenv("OPENAI_API_KEY")
 )
+
+
+def ai_suggest(request):
+    if request.method == "POST":
+        user_input = request.POST.get("request")
+
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {
+                    "role": "system",
+                    "content": "You suggest short actionable todo items."
+                },
+                {
+                    "role": "user",
+                    "content": f"{user_input} からTodoを5個日本語で箇条書きで作って"
+                }
+            ]
+        )
+
+        result = response.choices[0].message.content
+
+        return render(
+            request,
+            "AI_Todo/ai_result.html",
+            {"result": result}
+        )
+
+    return render(request, "AI_Todo/ai_form.html")
