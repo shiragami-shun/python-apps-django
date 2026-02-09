@@ -9,18 +9,17 @@
 </head>
 
 <body>
-
+    <div class="container"></div>
     <h1>Todo編集</h1>
-    <div class="container">
 
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
 
-            <button type="submit">保存</button>
-        </form>
+        <button type="submit">保存</button>
+    </form>
 
-        <a href="{% url 'AI_Todo' %}">一覧に戻る</a>
+    <a href="{% url 'AI_Todo' %}">一覧に戻る</a>
     </div>
 </body>
 

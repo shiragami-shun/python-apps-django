@@ -1,5 +1,6 @@
 /* ===== 全体リセット ===== */
-* {
+*::before 
+*::after{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -92,6 +93,38 @@ button:hover {
     background: #d1fae5;
     text-decoration: line-through;
     color: #065f46;
+}
+
+/* 移動ボタン全体 */
+.action-links {
+  display: flex;
+  flex-wrap: wrap;        /* 画面が狭くなったら折り返す */
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+/* 各リンクをボタン化 */
+.action-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 14px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #4a6cf7;
+
+  border: 1px solid #4a6cf7;
+  border-radius: 6px;
+  background: #fff;
+
+  white-space: nowrap;    /* 文字折り返し防止 */
+  transition: all 0.2s ease;
+}
+
+.action-links a:hover {
+  background: #4a6cf7;
+  color: #fff;
 }
 
 /* ===== フッター ===== */
