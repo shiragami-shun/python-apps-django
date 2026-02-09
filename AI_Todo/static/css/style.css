@@ -78,6 +78,27 @@ button:hover {
     margin-top: 10px;
 }
 
+.todo-list table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.todo-list th,
+.todo-list td {
+    padding: 10px 12px;
+    text-align: center;
+}
+
+.todo-list th {
+    background: #f1f5ff;
+    color: #333;
+}
+
+.todo-list tr:nth-child(even) td {
+    background: #f9fafb;
+}
+
 .todo-item {
     background: #f3f4f6;
     padding: 12px 14px;
