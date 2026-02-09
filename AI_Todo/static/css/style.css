@@ -1,6 +1,7 @@
 /* ===== 全体リセット ===== */
-*::before 
-*::after{
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -19,7 +20,8 @@ body {
 .container {
     background: #ffffff;
     width: 90%;
-    max-width: 600px;
+    max-width: 900px;
+    margin: 0 auto;
     padding: 32px;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
@@ -37,10 +39,12 @@ form {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 input[type="text"] {
-    flex: 1;
+    flex: 1 1 0%;
+    min-width: 0;   /* ← これがないと絶対はみ出る */
     padding: 12px 14px;
     border-radius: 8px;
     border: 1px solid #ccc;
