@@ -10,18 +10,20 @@
 </head>
 
 <body>
-  <h1>Todo登録</h1>
+  <div class="container">
+    <h1>Todo登録</h1>
 
-  <form method="post">
-    {% csrf_token %}
+    <form method="post">
+      {% csrf_token %}
 
-    <h3>Todo内容</h3>
-    {{ todo_form.as_p }}
+      <h3>Todo内容</h3>
+      {{ todo_form.as_p }}
 
-    <button type="submit">登録</button>
-  </form>
+      <button type="submit">登録</button>
+    </form>
 
-  <a href="{% url 'AI_Todo' %}">一覧へ戻る</a>
+    <a href="{% url 'AI_Todo' %}">一覧へ戻る</a>
+  </div>
 </body>
 
 </html>

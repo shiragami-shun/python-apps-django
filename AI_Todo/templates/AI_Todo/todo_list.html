@@ -9,45 +9,45 @@
 </head>
 
 <body>
+    <div class="container">
+        <h1>AI Todo一覧</h1>
+        <a href="{% url 'todo_create' %}">＋ Todoを追加</a>
+        <a href="{% url 'category_create' %}">＋ カテゴリを追加</a>
+        <a href="{% url 'ai_suggest' %}">＋ AIにTodoを提案してもらう</a>
 
-    <h1>AI Todo一覧</h1>
-    <a href="{% url 'todo_create' %}">＋ Todoを追加</a>
-    <a href="{% url 'category_create' %}">＋ カテゴリを追加</a>
-    <a href="{% url 'ai_suggest' %}">＋ AIにTodoを提案してもらう</a>
+        <table border="1">
+            <tr>
+                <th>Todo内容</th>
+                <th>カテゴリ</th>
+                <th>所要時間(分)</th>
+                <th>完了状況</th>
+                <th>操作</th>
+            </tr>
 
-    <table border="1">
-        <tr>
-            <th>Todo内容</th>
-            <th>カテゴリ</th>
-            <th>所要時間(分)</th>
-            <th>完了状況</th>
-            <th>操作</th>
-        </tr>
+            {% for todo in todos %}
+            <tr>
+                <td>{{ todo.title }}</td>
+                <td>{{ todo.category.name }}</td>
+                <td>{{ todo.minutes }}</td>
+                <td>
+                    {% if todo.is_completed %}
+                    完了
+                    {% else %}
+                    未完了
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{% url 'todo_edit' todo.id %}">編集</a>
+                    |
+                    <a href="{% url 'todo_delete' todo.id %}" onclick="return confirm('本当に削除しますか？')">
+                        削除
+                    </a>
+                </td>
 
-        {% for todo in todos %}
-        <tr>
-            <td>{{ todo.title }}</td>
-            <td>{{ todo.category.name }}</td>
-            <td>{{ todo.minutes }}</td>
-            <td>
-                {% if todo.is_completed %}
-                完了
-                {% else %}
-                未完了
-                {% endif %}
-            </td>
-            <td>
-                <a href="{% url 'todo_edit' todo.id %}">編集</a>
-                |
-                <a href="{% url 'todo_delete' todo.id %}" onclick="return confirm('本当に削除しますか？')">
-                    削除
-                </a>
-            </td>
-
-        </tr>
-        {% endfor %}
-    </table>
-
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 </body>
 
 </html>
