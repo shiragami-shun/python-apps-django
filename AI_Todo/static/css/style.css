@@ -159,3 +159,37 @@ button:hover {
     font-size: 12px;
     color: #888;
 }
+
+/* =========================
+   レスポンシブ（HTML変更なし）
+========================= */
+
+@media (max-width: 768px) {
+
+    /* コンテナ余白を少し減らす */
+    .container {
+        padding: 20px;
+    }
+
+    /* テーブルを横スクロール可能に */
+    .todo-list {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* 横幅を確保して崩れ防止 */
+    .todo-list table {
+        min-width: 700px;
+        width: 100%;
+    }
+
+    /* ボタンリンクを縦並びに */
+    .action-links {
+        flex-direction: column;
+    }
+
+    .action-links a {
+        width: 100%;
+        text-align: center;
+    }
+}
